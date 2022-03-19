@@ -6,11 +6,6 @@ import reportWebVitals from "./reportWebVitals";
 
 import { BrowserRouter } from "react-router-dom";
 
-<<<<<<< HEAD
-import { ThemeWrapper } from "react";
-=======
-
->>>>>>> 2f36f6c4d76319be7d4d56a1cabc2d4bcd4e7129
 
 ReactDOM.render(
   <BrowserRouter>
