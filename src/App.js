@@ -10,7 +10,7 @@ import SearchMovie from './components/SearchMovie';
 import Login from './pages/auth/Login';
 import Signin from './pages/auth/Signin';
 
-import Home from "./pages/Home";
+import Home from './pages/Home';
 import MeetUpList from './pages/MeetUpList';
 import MovieDetails from './pages/MovieDetails';
 import Profile from './pages/Profile';
@@ -21,11 +21,7 @@ import NotFound from './pages/NotFound';
 import { useEffect, useState, useContext } from 'react';
 // import { verifyService } from './services/auth.services';
 
-
-<<<<<<< HEAD
 // import { ThemeContext } from ".react"
-=======
->>>>>>> 2f36f6c4d76319be7d4d56a1cabc2d4bcd4e7129
 
 function App() {
 
