@@ -19,7 +19,7 @@ import Error from './pages/Error';
 import NotFound from './pages/NotFound';
 
 import { useEffect, useState, useContext } from 'react';
-// import { verifyService } from './services/auth.services';
+// import { verifyService } from './services/auth.services'; //!!!!!Preguntar!!!!!!
 
 
 
