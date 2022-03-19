@@ -3,9 +3,9 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 
 import Navbar from "./components/Navbar"
-import AddMeetUp from './pages/AddMeetUp';
-import MovieMeetUp from './pages/MovieMeetUp';
-import SearchMovie from './pages/SearchMovie';
+import AddMeetUp from './components/AddMeetUp';
+import MovieMeetUp from './components/MovieMeetUp';
+import SearchMovie from './components/SearchMovie';
 
 import Login from './pages/auth/Login';
 import Signin from './pages/auth/Signin';
@@ -21,7 +21,7 @@ import NotFound from './pages/NotFound';
 import { useEffect, useState, useContext } from 'react';
 import { verifyService } from './services/auth.services';
 
-import { ThemeContext } from "./context/theme.context"
+// import { ThemeContext } from ".react"
 
 function App() {
 

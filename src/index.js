@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 
 import { BrowserRouter } from "react-router-dom";
 
-import { ThemeWrapper } from "./context/theme.context";
+import { ThemeWrapper } from "react";
 
 ReactDOM.render(
   <BrowserRouter>
