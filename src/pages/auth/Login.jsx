@@ -24,11 +24,8 @@ function Login(props) {
 
     try {
 
-      // contactar con el server para login
       const response = await loginService(user)
       const { authToken } = response.data
-      // console.log("authToken", authToken)
-      // recibir el token y guardarlo en localstorage
 
       localStorage.setItem("authToken", authToken)
       
@@ -45,11 +42,6 @@ function Login(props) {
     }
 
   }
-
-  // ejemplo de estilos propios y estilos del context
-  // const btnStyles = {
-  //   color: "blue"
-  // }
 
   return (
     <div>
