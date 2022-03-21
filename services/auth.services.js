@@ -3,7 +3,6 @@ import axios from "axios";
 const service = axios.create({
   baseURL: `${process.env.REACT_APP_SERVER_URL}/auth`
 })
-
 // esta configuracion nos permite enviar el Token en cada request que se haga
 service.interceptors.request.use((config) => {
   // aqui buscamos el token en localstorage

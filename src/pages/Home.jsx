@@ -1,15 +1,12 @@
 import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import axios from "axios"
-import { useNavigate } from "react-router-dom";
+import { getNextKeyDef } from "@testing-library/user-event/dist/keyboard/getNextKeyDef";
 
 function Home() {
-  
-  const navigate = useNavigate()
-
   //1. crear el estado que controle la información del
 
-  //const [nowPlayingMovies, setNowPlayingMovies] = useEffect(null)
+  // const [nowPlayingMovies, setNowPlayingMovies] = useEffect(null)
   // const [nowDiscoverMovies, setDiscoverMovies] = useEffect(null)
 
   //2. el useEffect para buscar la info componentDidmounted
@@ -17,31 +14,18 @@ function Home() {
     getNowPlayingMovies()
   }, [])
 
-  useEffect (() => {
-    getMoviesGenreList()
-  }, [])
-
   //3. funcion async que haga la llamada a la api
 
   const getNowPlayingMovies = async () => {
     
     try {
-      const response = await axios.get("http://localhost:5005/api/movie/billboard")
-      console.log(response); 
-    } 
-    catch (error) {
-      navigate()
-    }
-
-  }
-  const getMoviesGenreList = async () => {
+      // const response = axios.get("https://api.themoviedb.org/3/movie/now_playing?api_key=ef089baa2cdc4146ef1590cfa9cc45b1")
+      const response = axios.get("http://localhost:5005/api/service/movie/now_playing")
     
-    try {
-      const response = await axios.get("http://localhost:5005/api/movie")
       console.log(response); 
     } 
     catch (error) {
-      navigate()
+      
     }
 
   }

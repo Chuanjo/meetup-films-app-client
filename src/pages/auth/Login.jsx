@@ -1,15 +1,15 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginService } from "../../services/auth.services";
+import { loginService } from "../auth/Login";
 
-import { ThemeContext } from "../../context/theme.context";
+// import { ThemeContext } from "../context/theme.context";
 
 function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [ errorMessage, setErrorMessage ] = useState("")
 
-  const { switchBtnTheme } = useContext(ThemeContext)
+  // const { switchBtnTheme } = useContext(ThemeContext)
 
   const navigate = useNavigate()
 
@@ -29,7 +29,7 @@ function Login(props) {
       localStorage.setItem("authToken", authToken)
       // redireccionar a "/todos"
       props.setIsLoggedIn(true)
-      navigate("/todos")
+      navigate("/")
 
     } catch(err) {
       if (err.response && err.response.status === 400) {
@@ -42,9 +42,9 @@ function Login(props) {
   }
 
   // ejemplo de estilos propios y estilos del context
-  const btnStyles = {
-    color: "blue"
-  }
+  // const btnStyles = {
+  //   color: "blue"
+  // }
 
   return (
     <div>
@@ -73,7 +73,8 @@ function Login(props) {
         <br />
 
         {/* <button style={{...btnStyles, ...switchBtnTheme()}}>Submit</button> */}
-        <button style={switchBtnTheme()}>Submit</button>
+        <button>Submit</button>
+        {/* style={switchBtnTheme()} */}
       </form>
       <p>{errorMessage}</p>
     </div>
