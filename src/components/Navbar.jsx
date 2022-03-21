@@ -123,7 +123,7 @@ function Navbar(props) {
     }
     {isLoggedIn && 
     <MenuItem onClick={handleMenuClose}>
-        <Link to="/signout">Log Out</Link>
+        <Link to="/" onClick={handleLogOut}>Log Out</Link>
       </MenuItem>
     }
     
@@ -239,23 +239,3 @@ function Navbar(props) {
 
 export default Navbar;
 
-{/* <form>
-        <label htmlFor="">Search</label>
-        <input type="text" />
-      </form>
-
-      {
-        isLoggedIn && <button onClick={handleMeetUp}><NavLink to="/meet-up-list">Meet up</NavLink></button>
-      }
-
-      {
-        !isLoggedIn && <button onClick={handleSignIn}><NavLink to="/signin">Sign in</NavLink></button>
-      }
-      {
-        !isLoggedIn && <button onClick={handleLogIn}><NavLink to="/login">Log in</NavLink></button>
-      }
-      {
-        isLoggedIn && <button onClick={handleLogOut}>Log out</button>
-      }
-      
-    </div> */}

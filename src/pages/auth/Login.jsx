@@ -56,7 +56,7 @@ function Login(props) {
 
       <h3>Log In</h3>
 
-      <form onSubmit={handleSubmit}>
+     {/* <form onSubmit={handleSubmit}>
       <Box
       component="form"
       sx={{
@@ -72,10 +72,17 @@ function Login(props) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-    </Box>
+    </Box> */}
 
-        {/* <label htmlFor="email">Email:</label> */}
-        
+   
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="email">Email:</label>
+        <input
+          type="text"
+          name="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
         
         <br />
 
