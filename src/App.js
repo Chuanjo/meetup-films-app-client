@@ -19,17 +19,34 @@ import Error from './pages/Error';
 import NotFound from './pages/NotFound';
 
 import { useEffect, useState, useContext } from 'react';
-// import { verifyService } from './services/auth.services'; //!!!!!Preguntar!!!!!!
+import { verifyService } from './services/auth.services';
 
 // import { ThemeContext } from ".react"
 
 function App() {
 
+  const [ isLoggedIn, setIsLoggedIn ] = useState(false)
+
+  useEffect(() => {
+    verifyUser()
+  }, [])
+
+  const verifyUser = async () => {
+    // conectar con el server y validar el token
+    try {
+      await verifyService()
+      // cambiar el isLoggedIn state a true
+      setIsLoggedIn(true)
+    } catch(err) {
+      setIsLoggedIn(false)
+    }
+  }
+
  
   return (
     <div className="App" >
      
-      <Navbar />
+      <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
 
       <Routes>
 
@@ -40,7 +57,7 @@ function App() {
         <Route path="/meet-up-list" element={ <MeetUpList /> }/>
 
         <Route path="/signin" element={ <Signin /> } />
-        <Route path="/login" element={ <Login /> } />
+        <Route path="/login" element={ <Login setIsLoggedIn={setIsLoggedIn}/> } />
 
         <Route path="/error" element={ <Error /> } />
         <Route path="*" element={ <NotFound /> } /> 
