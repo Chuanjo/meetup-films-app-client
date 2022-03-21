@@ -1,6 +1,9 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginService } from "../../services/auth.services";
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+
 // import { loginService } from "../auth/Login";
 
 // import { ThemeContext } from "../context/theme.context";
@@ -54,14 +57,26 @@ function Login(props) {
       <h3>Log In</h3>
 
       <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email:</label>
-        <input
+      <Box
+      component="form"
+      sx={{
+        '& > :not(style)': { m: 1, width: '25ch' },
+      }}
+      noValidate
+      autoComplete="off"
+      > 
+      <TextField id="outlined-basic" label="Email" variant="outlined" />
+      <input
           type="text"
           name="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+    </Box>
 
+        {/* <label htmlFor="email">Email:</label> */}
+        
+        
         <br />
 
         <label htmlFor="password">Password:</label>
