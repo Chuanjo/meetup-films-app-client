@@ -12,7 +12,7 @@ function Home() {
   //const [nowPlayingMovies, setNowPlayingMovies] = useEffect(null)
   // const [nowDiscoverMovies, setDiscoverMovies] = useEffect(null)
 
-  //2. el useEffect para buscar la info componentDidmounted
+  //2. useEffect to find info thoughts componentDidmounted
   useEffect (() => {
     getNowPlayingMovies()
   }, [])
