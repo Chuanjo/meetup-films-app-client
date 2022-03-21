@@ -116,21 +116,33 @@ function Navbar(props) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
+    {isLoggedIn &&
       <MenuItem onClick={handleMenuClose}>
         <Link to="/profile">Profile</Link>
       </MenuItem>
+    }
+    {isLoggedIn && 
+    <MenuItem onClick={handleMenuClose}>
+        <Link to="/signout">Log Out</Link>
+      </MenuItem>
+    }
+    
+    {!isLoggedIn &&
+     <MenuItem onClick={handleMenuClose}>
+        <Link to="/login">Log In</Link>
+      </MenuItem>
+    }
+    {!isLoggedIn &&
+     <MenuItem onClick={handleMenuClose}>
+        <Link to="/signin">Sing In</Link>
+      </MenuItem>
+    }
       <MenuItem onClick={handleMenuClose}>
         <Link to="/">Home</Link>
       </MenuItem>
-      <MenuItem onClick={handleMenuClose}>
-        <Link to="/login">Log In</Link>
-      </MenuItem>
-      <MenuItem onClick={handleMenuClose}>
-        <Link to="/signin">Sing In</Link>
-      </MenuItem>
-      <MenuItem onClick={handleMenuClose}>
-        <Link to="/signout">Log Out</Link>
-      </MenuItem>
+      
+      
+      
     </Menu>
   );
 
