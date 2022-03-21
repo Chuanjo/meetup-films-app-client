@@ -2,7 +2,7 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 
-import Navbar from "./components/Navbar"
+import Navbar from "./components/Navbar.jsx"
 import AddMeetUp from './components/AddMeetUp';
 import MovieMeetUp from './components/MovieMeetUp';
 import SearchMovie from './components/SearchMovie';
@@ -46,6 +46,7 @@ function App() {
   return (
     <div className="App" >
      
+      
       <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
 
       <Routes>

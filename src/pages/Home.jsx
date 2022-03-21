@@ -1,11 +1,14 @@
 import React, { useEffect } from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Navbar.jsx";
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
+
 
 function Home() {
   
   const navigate = useNavigate()
+
+  
 
   //1. crear el estado que controle la información del
 
@@ -54,6 +57,8 @@ function Home() {
 
   
   return (
+    
+    
     <div
       id="carouselExampleCaptions"
       className="carousel slide"
