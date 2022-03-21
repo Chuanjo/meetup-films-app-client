@@ -9,7 +9,6 @@ function Home() {
   const navigate = useNavigate()
 
   
-
   //1. crear el estado que controle la información del
 
   const [nowPlayingMovies, setNowPlayingMovies] = useState(null)
