@@ -16,7 +16,7 @@ function Signin() {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const user = { username, email, password }
+    const user = { username, email, password, nickName, city }
     // enviar usuario al backend para crear el registro
     try {
       await signinService(user)
