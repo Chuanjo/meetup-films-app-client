@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginService } from "../auth/Login";
+import { loginService } from "../../services/auth.services";
+// import { loginService } from "../auth/Login";
 
 // import { ThemeContext } from "../context/theme.context";
 
@@ -23,11 +24,12 @@ function Login(props) {
       // contactar con el server para login
       const response = await loginService(user)
       const { authToken } = response.data
-      console.log("authToken", authToken)
+      // console.log("authToken", authToken)
       // recibir el token y guardarlo en localstorage
 
       localStorage.setItem("authToken", authToken)
-      // redireccionar a "/todos"
+      
+      // Redirect Home
       props.setIsLoggedIn(true)
       navigate("/")
 
@@ -49,7 +51,7 @@ function Login(props) {
   return (
     <div>
 
-      <h3>Acceder</h3>
+      <h3>Log In</h3>
 
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email:</label>

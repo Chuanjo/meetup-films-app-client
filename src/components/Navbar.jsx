@@ -28,11 +28,13 @@ function Navbar(props) {
         <label htmlFor="">Search</label>
         <input type="text" />
       </form>
+      
 
-      <button onClick={handleMeetUp}>Meet up</button>
+      
+      <button onClick={handleMeetUp}><NavLink to="/meet-up-list">Meet up</NavLink></button>
 
-      <button onClick={handleSignIn}>Sign in</button>
-      <button onClick={handleLogIn}>Log in</button>
+      <button onClick={handleSignIn}><NavLink to="/signin">Sign in</NavLink></button>
+      <button onClick={handleLogIn}><NavLink to="/login">Log in</NavLink></button>
 
       <button onClick={handleLogOut}>Log out</button>
       

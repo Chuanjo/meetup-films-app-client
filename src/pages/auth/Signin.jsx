@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { signinService } from '../auth/Signin'
+import { signinService } from '../../services/auth.services'
 
 function Signin() {
 
@@ -8,6 +8,8 @@ function Signin() {
   const [ email, setEmail ] = useState("")
   const [ password, setPassword ] = useState("")
   const [ errorMessage, setErrorMessage ] = useState("")
+  const [ nickName, setNickName ] = useState("")
+  const [ city, setCity ] = useState("")
 
   const navigate = useNavigate()
 
@@ -63,6 +65,26 @@ function Signin() {
           name="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+        />
+
+        <br />
+
+        <label htmlFor="nickName">Nick:</label>
+        <input 
+          type="text" 
+          name="nickName" 
+          value={nickName}
+          onChange={(e) => setNickName(e.target.value)}
+        />
+
+        <br />
+
+        <label htmlFor="city">City:</label>
+        <input 
+          type="text" 
+          name="city" 
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
         />
 
         <br />
