@@ -2,7 +2,7 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 
-import Navbar from "./components/Navbar.jsx"
+import Navbar from "./components/Navbar2"
 import AddMeetUp from './components/AddMeetUp';
 import MovieMeetUp from './components/MovieMeetUp';
 import SearchMovie from './components/SearchMovie';
