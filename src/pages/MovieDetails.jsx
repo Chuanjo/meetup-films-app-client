@@ -42,16 +42,16 @@ function MovieDetails() {
 
     <h3>Poster:
       <p>
-      {movieDetails.original_title}
+      
       </p>
     </h3>
-    <h2>Title:</h2>
-    <h3>Director:</h3>
-    <h3>Year:</h3>
-    <h3>Duration:</h3>
-    <h3>Cast:</h3>
-    <h3>Genre:</h3>
-    <h3>Synopsis:</h3>
+    <h2>Title: {movieDetails.original_title}</h2>
+    <h3>Director: {movieDetails.original_title}</h3>
+    <h3>Year: {movieDetails.release_date}</h3>
+    <h3>Duration: {movieDetails.original_title}</h3>
+    <h3>Cast: {movieDetails.original_title}</h3>
+    <h3>Genre: {movieDetails.original_title}</h3>
+    <h3>Synopsis: {movieDetails.overview}</h3>
     
     <h3>MovieMeetUp Component</h3>
 
