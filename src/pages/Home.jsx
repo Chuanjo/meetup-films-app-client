@@ -57,7 +57,9 @@ function Home() {
       {nowPlayingMovies.map((eachMovie) => {
         return (
           <div key={eachMovie.id}>
-            <p>{eachMovie.original_title}</p>
+            
+            <Link to={`/${eachMovie.id}/movie-details`}>{eachMovie.original_title}</Link>
+            
           </div>
         );
       })}
