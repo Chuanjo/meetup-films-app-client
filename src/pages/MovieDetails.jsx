@@ -1,28 +1,34 @@
 
-import axios from "axios"
 import { useEffect, useState } from "react"
-import { useNavigate, useParams, Link } from "react-router-dom"
+import { useNavigate, Link, useParams } from "react-router-dom"
+import { movieDetailsService } from "../services/movie.services"
 
 
-function MovieDetails(props) {
+function MovieDetails() {
   const [ movieDetails, setMovieDetails ] = useState(null)
-
+  
   const { id } = useParams()
   const navigate = useNavigate()
 
+  
+  const getMovieDetails = async () => {
+    try {
+      const response = await movieDetailsService(id)
+      setMovieDetails(response.data);
+    } 
+    catch(error) 
+    {
+      if (error.response.status === 401) {
+        navigate("/login");
+      } else {
+        navigate("/error");
+      }
+    }
+  }
   useEffect(() => {
     getMovieDetails()
   }, [])
-
-  const getMovieDetails = async () => {
-    try {
-      // const response = await axios.get()
-      // setMovieDetails(response.data)
-    } catch(err) {
-      // navigate error
-    }
-  }
-
+  
   if (!movieDetails) {
     return <h3>...Loading</h3>
   }
@@ -36,7 +42,7 @@ function MovieDetails(props) {
 
     <h3>Poster:
       <p>
-      {/* {eachMovie.original_title} */}
+      {movieDetails.original_title}
       </p>
     </h3>
     <h2>Title:</h2>
