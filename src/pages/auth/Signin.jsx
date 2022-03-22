@@ -1,48 +1,43 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { signinService } from '../../services/auth.services'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { signinService } from "../../services/auth.services";
 
 function Signin() {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [nickName, setNickName] = useState("");
+  const [city, setCity] = useState("");
 
-  const [ username, setUsername ] = useState("")
-  const [ email, setEmail ] = useState("")
-  const [ password, setPassword ] = useState("")
-  const [ errorMessage, setErrorMessage ] = useState("")
-  const [ nickName, setNickName ] = useState("")
-  const [ city, setCity ] = useState("")
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const user = { username, email, password, nickName, city }
-    // enviar usuario al backend para crear el registro
+    const user = { username, email, password, nickName, city };
+    // Send User to backend for register creating.
     try {
-      await signinService(user)
-      navigate("/login")
-    } catch(err) {
-      // if (err?.response?.status === 400) {
+      await signinService(user);
+      navigate("/login");
+    } catch (err) {
       if (err.response && err.response.status === 400) {
-        setErrorMessage(err.response.data.errorMessage)
+        setErrorMessage(err.response.data.errorMessage);
       } else {
-        navigate("/error")
+        navigate("/error");
       }
     }
-
-  }
+  };
 
   return (
     <div>
-    
       <h3>Sign In</h3>
 
       <form onSubmit={handleSubmit}>
-
         <label htmlFor="username">Username:</label>
-        <input 
-          type="text" 
-          name="username" 
+        <input
+          type="text"
+          name="username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
@@ -50,8 +45,8 @@ function Signin() {
         <br />
 
         <label htmlFor="email">Email:</label>
-        <input 
-          type="text" 
+        <input
+          type="text"
           name="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -60,8 +55,8 @@ function Signin() {
         <br />
 
         <label htmlFor="password">Password:</label>
-        <input 
-          type="text" 
+        <input
+          type="text"
           name="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -70,9 +65,9 @@ function Signin() {
         <br />
 
         <label htmlFor="nickName">Nick:</label>
-        <input 
-          type="text" 
-          name="nickName" 
+        <input
+          type="text"
+          name="nickName"
           value={nickName}
           onChange={(e) => setNickName(e.target.value)}
         />
@@ -80,9 +75,9 @@ function Signin() {
         <br />
 
         <label htmlFor="city">City:</label>
-        <input 
-          type="text" 
-          name="city" 
+        <input
+          type="text"
+          name="city"
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
@@ -90,13 +85,11 @@ function Signin() {
         <br />
 
         <button>Submit</button>
-
       </form>
 
       <p>{errorMessage}</p>
-    
     </div>
-  )
+  );
 }
 
-export default Signin
+export default Signin;
