@@ -3,7 +3,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 
 function Profile(props) {
   const { id } = useParams();
-  const hola = "hola";
+  
 
   return (
     <div>
