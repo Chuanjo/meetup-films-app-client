@@ -1,54 +1,49 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginService } from "../../services/auth.services";
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
 
 // import { loginService } from "../auth/Login";
-
 // import { ThemeContext } from "../context/theme.context";
 
 function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [ errorMessage, setErrorMessage ] = useState("")
+  const [errorMessage, setErrorMessage] = useState("");
 
   // const { switchBtnTheme } = useContext(ThemeContext)
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const user = { email, password }
+    const user = { email, password };
 
     try {
+      const response = await loginService(user);
+      const { authToken } = response.data;
 
-      const response = await loginService(user)
-      const { authToken } = response.data
+      localStorage.setItem("authToken", authToken);
 
-      localStorage.setItem("authToken", authToken)
-      
       // Redirect Home
-      props.setIsLoggedIn(true)
-      navigate("/")
-
-    } catch(err) {
+      props.setIsLoggedIn(true);
+      navigate("/");
+    } catch (err) {
       if (err.response && err.response.status === 400) {
-        setErrorMessage(err.response.data.errorMessage)
+        setErrorMessage(err.response.data.errorMessage);
       } else {
-        navigate("/error")
+        navigate("/error");
       }
     }
-
-  }
+  };
 
   return (
     <div>
-
       <h3>Log In</h3>
 
-     {/* <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}>
       <Box
       component="form"
       sx={{
@@ -66,7 +61,6 @@ function Login(props) {
         />
     </Box> */}
 
-   
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email:</label>
         <input
@@ -75,7 +69,7 @@ function Login(props) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        
+
         <br />
 
         <label htmlFor="password">Password:</label>
