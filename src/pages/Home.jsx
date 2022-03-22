@@ -60,7 +60,7 @@ function Home() {
      
       {nowPlayingMovies.map((eachMovie) => {
         return (
-          <div>
+          <div key={eachMovie.id}>
             <p>{eachMovie.original_title}</p>
           </div>
         )
