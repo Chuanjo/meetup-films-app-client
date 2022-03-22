@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { getNowPlayingMovieService } from "../services/movie.services";
 
 function Home() {
   const navigate = useNavigate();
@@ -18,14 +19,13 @@ function Home() {
   //   getMoviesGenreList()
   // }, [])
 
-  //3. funcion async que haga la llamada a la api
+  //3. Async function. calls service function
 
   const getNowPlayingMovies = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:5005/api/movie/billboard"
-      );
+      const response = await getNowPlayingMovieService()
       console.log(response.data);
+      console.log("hola");
       setNowPlayingMovies(response.data);
     } catch (error) {
       if (error.response.status === 401) {
@@ -35,6 +35,8 @@ function Home() {
       }
     }
   };
+
+  
   // const getMoviesGenreList = async () => {
   //   try {
   //     const response = await axios.get("http://localhost:5005/api/movie")
