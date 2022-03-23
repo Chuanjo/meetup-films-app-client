@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getNowPlayingMovieService } from "../services/movie.services";
 
+
 function Home() {
   const navigate = useNavigate();
 
@@ -15,6 +16,7 @@ function Home() {
     getNowPlayingMovies();
   }, []);
 
+ 
   // useEffect (() => {
   //   getMoviesGenreList()
   // }, [])

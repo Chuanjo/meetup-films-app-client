@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { styled, alpha } from "@mui/material/styles";
+import { searchMovieService } from "../services/movie.services";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -16,6 +17,9 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import InputBase from "@mui/material/InputBase";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { Image } from "@mui/icons-material";
+
+
+
 
 function Navbar(props) {
   const { isLoggedIn, setIsLoggedIn } = props;
@@ -98,6 +102,11 @@ function Navbar(props) {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+
+  const handleInputText = (e) => {
+    console.log(e.target.value);
+    // document.getElementById("searchInput")
+  }
 
   const menuId = "primary-search-account-menu";
   const renderMenu = (
@@ -205,6 +214,8 @@ function Navbar(props) {
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
+              onChange={handleInputText}
+              id="searchInput"
             />
           </Search>
           <Box sx={{ flexGrow: 1 }} />
