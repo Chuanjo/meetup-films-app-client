@@ -1,10 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  meetUpFormService,
-  meetUpListService,
-} from "../services/meetUpList.services";
+import { meetUpFormService, meetUpListService, } from "../services/meetUpList.services";
 
 function MeetUpMovie(props) {
   const [title, setTitle] = useState("");
@@ -13,7 +10,6 @@ function MeetUpMovie(props) {
   // const [movie, setMovie] = useState("");
   const [type, setType] = useState("");
   const [showForm, setShowForm] = useState(false);
-
 
   const navigate = useNavigate();
 
@@ -36,7 +32,7 @@ function MeetUpMovie(props) {
       setCity("");
       // setMovie("");
       setType("");
-
+      navigate("/meet-up-list");
     } catch (error) {
       navigate("/error");
     }
@@ -48,43 +44,45 @@ function MeetUpMovie(props) {
 
   return (
     <div>
-      <button onClick={handleShowForm}>New MeetUp</button>
+      <div>
+        <button onClick={handleShowForm}>New MeetUp</button>
 
-      {showForm && (
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="title">Title:</label>
-          <input
-            type="text"
-            name="title"
-            value={title}
-            onChange={handleTitle}
-          />
+        {showForm && (
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="title">Title:</label>
+            <input
+              type="text"
+              name="title"
+              value={title}
+              onChange={handleTitle}
+            />
 
-          <br />
+            <br />
 
-          <label htmlFor="description">Description:</label>
-          <input
-            type="text"
-            name="description"
-            value={description}
-            onChange={handleDescription}
-          />
+            <label htmlFor="description">Description:</label>
+            <input
+              type="text"
+              name="description"
+              value={description}
+              onChange={handleDescription}
+            />
 
-          <br />
+            <br />
 
-          <label htmlFor="city">City:</label>
-          <input type="text" name="city" value={city} onChange={handleCity} />
+            <label htmlFor="city">City:</label>
+            <input type="text" name="city" value={city} onChange={handleCity} />
 
-          <br />
+            <br />
 
-          <label htmlFor="type">Type:</label>
-          <input type="enum" name="type" value={type} onChange={handleType} />
+            <label htmlFor="type">Type:</label>
+            <input type="enum" name="type" value={type} onChange={handleType} />
 
-          <br />
+            <br />
 
-          <button>Add</button>
-        </form>
-      )}
+            <button>Add</button>
+          </form>
+        )}
+      </div>
     </div>
   );
 }
