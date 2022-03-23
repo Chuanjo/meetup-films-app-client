@@ -140,6 +140,10 @@ function Navbar(props) {
       <MenuItem onClick={handleMenuClose}>
         <Link to="/">Home</Link>
       </MenuItem>
+
+      <MenuItem onClick={handleMenuClose}>
+        <Link to="/meet-up-list">Meet up</Link>
+      </MenuItem>
       
       
       
