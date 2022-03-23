@@ -16,8 +16,8 @@ const meetUpListService = () => {
   return service.get("/allMeetUp")
 }
 
-const meetUpFormService = () => {
-  return service.post("/newMeetUp")
+const meetUpFormService = (newMeetUp) => {
+  return service.post("/newMeetUp", newMeetUp)
 }
 
 
