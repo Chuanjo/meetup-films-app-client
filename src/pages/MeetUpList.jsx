@@ -34,7 +34,7 @@ function MeetUpList() {
 
   return (
     <div>
-      <h1>AddMeetUp Component</h1>
+      {/* Component */}
       <MeetUp />
 
       <h1>MeetUpList</h1>
@@ -42,12 +42,13 @@ function MeetUpList() {
       {allMeetups.map((eachMeetup) => {
         return (
           <div>
-            <p>{eachMeetup.title}</p>
+            <p>{eachMeetup._id}</p>
+            {/* <p>{eachMeetup.user.username}</p> */}
           </div>
         );
       })}
 
-      <h1>All Meet up List</h1>
+      
     </div>
   );
 }

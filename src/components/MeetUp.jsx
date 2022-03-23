@@ -1,8 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { meetUpFormService } from "../services/meetUpList.services";
-
+import {
+  meetUpFormService,
+  meetUpListService,
+} from "../services/meetUpList.services";
 
 function MeetUp() {
   const [title, setTitle] = useState("");
@@ -11,8 +13,9 @@ function MeetUp() {
   const [movie, setMovie] = useState("");
   // const [creator, setCreator] = useState("");
   const [type, setType] = useState("");
+  const [showForm, setShowForm] = useState(false);
   // const [attendees, setAttendees] = useState([]);
-  
+
   const navigate = useNavigate();
 
   const handleTitle = (e) => setTitle(e.target.value);
@@ -23,101 +26,96 @@ function MeetUp() {
   const handleType = (e) => setType(e.target.value);
   // const handleAttendees = (e) => setAttendees(e.target.value);
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const newMeetUp = { title, description, city, movie, type };
 
     try {
-      const newMeetUp = { title, description, city, movie, type };
       await meetUpFormService(newMeetUp);
-      
+
+      meetUpListService();
       setTitle("");
       setDescription("");
-      setCity("")
-      setMovie("")
+      setCity("");
+      setMovie("");
       // setCreator("")
-      setType("")
+      setType("");
       // setAttendees("")
-
     } catch (error) {
       navigate("/error");
     }
   };
 
+  const handleShowForm = () => {
+    setShowForm(!showForm);
+  };
+
   return (
     <div>
-      <h3>Add new MeetUp</h3>
+      <button onClick={handleShowForm}>New MeetUp</button>
 
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="title">Title:</label>
-        <input 
-          type="text" 
-          name="title" 
-          value={title} 
-          onChange={handleTitle} />
+      {showForm && (
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="title">Title:</label>
+          <input
+            type="text"
+            name="title"
+            value={title}
+            onChange={handleTitle}
+          />
 
-        <br />
+          <br />
 
-        <label htmlFor="description">Description:</label>
-        <input
-          type="text"
-          name="description"
-          value={description}
-          onChange={handleDescription}
-        />
+          <label htmlFor="description">Description:</label>
+          <input
+            type="text"
+            name="description"
+            value={description}
+            onChange={handleDescription}
+          />
 
-        <br />
+          <br />
 
-        <label htmlFor="city">City:</label>
-        <input
-          type="text"
-          name="city"
-          value={city}
-          onChange={handleCity}
-        />
+          <label htmlFor="city">City:</label>
+          <input type="text" name="city" value={city} onChange={handleCity} />
 
-         <br />
+          <br />
 
-        <label htmlFor="movie">Movie:</label>
-        <input
-          type="text"
-          name="movie"
-          value={movie}
-          onChange={handleMovie}
-        />
+          <label htmlFor="movie">Movie:</label>
+          <input
+            type="text"
+            name="movie"
+            value={movie}
+            onChange={handleMovie}
+          />
 
-         <br />
+          <br />
 
-        {/* <label htmlFor="creator">Creator:</label>
+          {/* <label htmlFor="creator">Creator:</label>
         <input
           type="text"
           name="creator"
           value={creator}
           onChange={handleCreator}
         /> */}
-        
-        <br />
 
-        <label htmlFor="type">Type:</label>
-        <input
-          type="enum"
-          name="type"
-          value={type}
-          onChange={handleType}
-        />
+          <br />
 
-        <br />
+          <label htmlFor="type">Type:</label>
+          <input type="enum" name="type" value={type} onChange={handleType} />
 
-        {/* <label htmlFor="attendees">Attendees:</label>
+          <br />
+
+          {/* <label htmlFor="attendees">Attendees:</label>
         <input
           type="text"
           name="attendees"
           value={attendees}
           onChange={handleAttendees}
         /> */}
-
-        <button>Add</button>
-      </form>
+          <button>Add</button>
+        </form>
+      )}
     </div>
   );
 }
