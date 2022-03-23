@@ -5,19 +5,19 @@ const service = axios.create({
 })
 
 
-const meetUpListService = () => {
-  return service.post("/")
-}
+// const meetUpListService = () => {
+//   return service.post("/")
+// }
 
 const meetupService = () => {
-  return service.post("/")
+  return service.post("/meetUpList")
 }
 
 
 
 
 export {
-  meetUpListService,
+  // meetUpListService,
   meetupService,
   
 }
