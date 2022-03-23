@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { meetupService } from "../services/meetUpList.services";
+import { meetUpFormService } from "../services/meetUpList.services";
 
 
 function MeetUp() {
@@ -9,9 +9,9 @@ function MeetUp() {
   const [description, setDescription] = useState("");
   const [city, setCity] = useState("");
   const [movie, setMovie] = useState("");
-  const [creator, setCreator] = useState("");
+  // const [creator, setCreator] = useState("");
   const [type, setType] = useState("");
-  const [attendees, setAttendees] = useState([]);
+  // const [attendees, setAttendees] = useState([]);
   
   const navigate = useNavigate();
 
@@ -19,25 +19,25 @@ function MeetUp() {
   const handleDescription = (e) => setDescription(e.target.value);
   const handleCity = (e) => setCity(e.target.value);
   const handleMovie = (e) => setMovie(e.target.value);
-  const handleCreator = (e) => setCreator(e.target.value);
+  // const handleCreator = (e) => setCreator(e.target.value);
   const handleType = (e) => setType(e.target.value);
-  const handleAttendees = (e) => setAttendees(e.target.value);
+  // const handleAttendees = (e) => setAttendees(e.target.value);
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const newMeetUp = { title, description, city, movie, creator, type, attendees };
-      const response = await meetupService(newMeetUp);
+      const newMeetUp = { title, description, city, movie, type };
+      await meetUpFormService(newMeetUp);
       
       setTitle("");
       setDescription("");
       setCity("")
       setMovie("")
-      setCreator("")
+      // setCreator("")
       setType("")
-      setAttendees("")
+      // setAttendees("")
 
     } catch (error) {
       navigate("/error");
@@ -88,13 +88,13 @@ function MeetUp() {
 
          <br />
 
-        <label htmlFor="creator">Creator:</label>
+        {/* <label htmlFor="creator">Creator:</label>
         <input
           type="text"
           name="creator"
           value={creator}
           onChange={handleCreator}
-        />
+        /> */}
         
         <br />
 
@@ -108,15 +108,15 @@ function MeetUp() {
 
         <br />
 
-        <label htmlFor="attendees">Attendees:</label>
+        {/* <label htmlFor="attendees">Attendees:</label>
         <input
           type="text"
           name="attendees"
           value={attendees}
           onChange={handleAttendees}
-        />
+        /> */}
 
-        <button>Agregar</button>
+        <button>Add</button>
       </form>
     </div>
   );
