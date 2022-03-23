@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { addNewTodoService } from "../services/todo.services";
+import { meetupService } from "../services/meetUpList.services";
+
 
 function MeetUp() {
   const [title, setTitle] = useState("");
@@ -28,7 +29,7 @@ function MeetUp() {
 
     try {
       const newMeetUp = { title, description, city, movie, creator, type, attendees };
-      const response = await addNewTodoService(newMeetUp);
+      const response = await meetupService(newMeetUp);
       
       setTitle("");
       setDescription("");
@@ -38,7 +39,7 @@ function MeetUp() {
       setType("")
       setAttendees("")
 
-    } catch (err) {
+    } catch (error) {
       navigate("/error");
     }
   };
