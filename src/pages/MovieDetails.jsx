@@ -55,7 +55,7 @@ function MovieDetails() {
     <h3>Synopsis: {movieDetails.overview}</h3>
     
     <h3>MovieMeetUp Component</h3>
-    <MeetUpMovie />
+    <MeetUpMovie id={id}/>
 
     <h3>Trailer:</h3>
     

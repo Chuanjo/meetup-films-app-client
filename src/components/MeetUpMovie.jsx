@@ -6,15 +6,14 @@ import {
   meetUpListService,
 } from "../services/meetUpList.services";
 
-function MeetUpMovie() {
+function MeetUpMovie(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [city, setCity] = useState("");
   // const [movie, setMovie] = useState("");
-  // const [creator, setCreator] = useState("");
   const [type, setType] = useState("");
   const [showForm, setShowForm] = useState(false);
-  // const [attendees, setAttendees] = useState([]);
+
 
   const navigate = useNavigate();
 
@@ -22,13 +21,11 @@ function MeetUpMovie() {
   const handleDescription = (e) => setDescription(e.target.value);
   const handleCity = (e) => setCity(e.target.value);
   // const handleMovie = (e) => setMovie(e.target.value);
-  // const handleCreator = (e) => setCreator(e.target.value);
   const handleType = (e) => setType(e.target.value);
-  // const handleAttendees = (e) => setAttendees(e.target.value);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newMeetUp = { title, description, city, type };
+    const newMeetUp = { title, description, city, movie: props.id, type };
 
     try {
       await meetUpFormService(newMeetUp);
@@ -38,9 +35,8 @@ function MeetUpMovie() {
       setDescription("");
       setCity("");
       // setMovie("");
-      // setCreator("")
       setType("");
-      // setAttendees("")
+
     } catch (error) {
       navigate("/error");
     }
@@ -81,36 +77,11 @@ function MeetUpMovie() {
 
           <br />
 
-          {/* <label htmlFor="movie">Movie:</label>
-          <input
-            type="text"
-            name="movie"
-            value={movie}
-            onChange={handleMovie}
-          /> */}
-          
-          {/* <label htmlFor="creator">Creator:</label>
-        <input
-          type="text"
-          name="creator"
-          value={creator}
-          onChange={handleCreator}
-        /> */}
-
-          <br />
-
           <label htmlFor="type">Type:</label>
           <input type="enum" name="type" value={type} onChange={handleType} />
 
           <br />
 
-          {/* <label htmlFor="attendees">Attendees:</label>
-        <input
-          type="text"
-          name="attendees"
-          value={attendees}
-          onChange={handleAttendees}
-        /> */}
           <button>Add</button>
         </form>
       )}
