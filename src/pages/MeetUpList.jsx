@@ -47,8 +47,7 @@ function MeetUpList(props) {
       {allMeetups.map((eachMeetup) => {
         return (
           <div>
-            {/* <p>{eachTodo.title}</p> */}
-            <Link to={`/todos/${eachMeetup._id}/details`}>{eachMeetup.title}</Link>
+            <p>{eachMeetup.title}</p>
           </div>
         )
       })}

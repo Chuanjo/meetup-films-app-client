@@ -10,7 +10,7 @@ const service = axios.create({
 // }
 
 const meetupService = () => {
-  return service.post("/meetUpList")
+  return service.get("/meetUpList")
 }
 
 
