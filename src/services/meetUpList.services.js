@@ -16,6 +16,10 @@ const meetUpListService = () => {
   return service.get("/allMeetUp");
 };
 
+export const getMeetUpById = (id) =>{
+  return service.get(`/getmeetupbyid/${id}`)
+}
+
 const meetUpFormService = (newMeetUp) => {
   return service.post("/newMeetUp", newMeetUp);
 };

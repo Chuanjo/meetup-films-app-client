@@ -72,7 +72,7 @@ function MeetUpList() {
                       variant="body2"
                       color="text.primary"
                     >
-                      {eachMeetup.creator} <br />
+                      {eachMeetup.creator.username} <br />
                       {eachMeetup.city}:
                     </Typography>
                     {`  ${eachMeetup.description}`}

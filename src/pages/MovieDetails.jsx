@@ -3,15 +3,15 @@ import { useEffect, useState } from "react"
 import { useNavigate, Link, useParams } from "react-router-dom"
 import MeetUpMovie from "../components/MeetUpMovie"
 import { movieDetailsService } from "../services/movie.services"
-import { meetUpListService } from "../services/meetUpList.services.js"
-import MeetupList from "../components/MeetupList"
+import { meetUpListService, getMeetUpById } from "../services/meetUpList.services.js"
+import MeetupListComponet from "../components/MeetupListComponent"
 import { SmartButtonOutlined } from "@mui/icons-material"
 
 
 function MovieDetails() {
   const [ movieDetails, setMovieDetails ] = useState(null)
   const [ meetUpListMovie, setMeetUpListMovie ] = useState(null)
-  const [ meetUpList, setMeetupList] = useState("")
+  const [ meetUpList, setMeetupList] = useState([])
   
   const { id } = useParams()
   const navigate = useNavigate()
@@ -19,6 +19,7 @@ function MovieDetails() {
   
   const getMovieDetails = async () => {
     try {
+     
       const response = await movieDetailsService(id)
       setMovieDetails(response.data);
     } 
@@ -34,12 +35,8 @@ function MovieDetails() {
 
   const getMeetUpMovieId = async () => {
     try {
-      const response = await meetUpListService()
-      setMeetUpListMovie(response.data);
-      const sm = meetUpListMovie.filter((eachMeetup)=>{
-        return eachMeetup.movie.includes(id)
-      })
-      setMeetupList(sm)
+      const response = await getMeetUpById(id)
+      setMeetupList(response.data)
       
     } 
     catch(error) 
@@ -58,11 +55,11 @@ function MovieDetails() {
     
   }, [])
   
-  if (!movieDetails && !meetUpList) {
+  if (!movieDetails) {
     return <h3>...Loading</h3>
   }
   
-  console.log(meetUpList)
+  
 
   return (
     
@@ -95,7 +92,7 @@ function MovieDetails() {
           </div>
         );
       })} */}
-    {/* <MeetupList meetUpList={meetUpList}/> */}
+    {/* <MeetupListComponent meetUpList={meetUpList}/> */}
     {meetUpList.map((eachList)=>{
       return <p>{eachList.title}</p>
     })}
