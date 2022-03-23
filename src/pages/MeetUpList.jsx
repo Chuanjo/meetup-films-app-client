@@ -47,7 +47,7 @@ function MeetUpList() {
       <MeetUp />
 
       <h1>MeetUpList</h1>
-
+    
       {allMeetups.map((eachMeetup) => {
         return (
           <List
@@ -58,7 +58,7 @@ function MeetUpList() {
               alignItems: "center",
             }}
           >
-            <ListItem alignItems="flex-start">
+            <ListItem alignItems="flex-start, center">
               <ListItemAvatar>
                 <Avatar alt="" />
               </ListItemAvatar>
@@ -72,7 +72,8 @@ function MeetUpList() {
                       variant="body2"
                       color="text.primary"
                     >
-                      {eachMeetup.city}: 
+                      {eachMeetup.creator} <br />
+                      {eachMeetup.city}:
                     </Typography>
                     {`  ${eachMeetup.description}`}
                   </React.Fragment>
@@ -81,15 +82,6 @@ function MeetUpList() {
             </ListItem>
             <Divider variant="inset" component="li" />
           </List>
-        );
-      })}
-
-      {allMeetups.map((eachMeetup) => {
-        return (
-          <div>
-            <p>{eachMeetup._id}</p>
-            {/* <p>{eachMeetup.user.username}</p> */}
-          </div>
         );
       })}
     </div>
