@@ -83,15 +83,6 @@ function MeetUpList() {
           </List>
         );
       })}
-
-      {allMeetups.map((eachMeetup) => {
-        return (
-          <div>
-            <p>{eachMeetup._id}</p>
-            {/* <p>{eachMeetup.user.username}</p> */}
-          </div>
-        );
-      })}
     </div>
   );
 }
