@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react"
 import { useNavigate, Link, useParams } from "react-router-dom"
+import MeetUpMovie from "../components/MeetUpMovie"
 import { movieDetailsService } from "../services/movie.services"
 
 
@@ -40,7 +41,7 @@ function MovieDetails() {
     
     <h1>Movie Details</h1>
 
-    <h3>Poster:
+    <h3>Poster:2
       <p>
       
       </p>
@@ -54,6 +55,7 @@ function MovieDetails() {
     <h3>Synopsis: {movieDetails.overview}</h3>
     
     <h3>MovieMeetUp Component</h3>
+    <MeetUpMovie />
 
     <h3>Trailer:</h3>
     

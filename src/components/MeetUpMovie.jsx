@@ -6,11 +6,11 @@ import {
   meetUpListService,
 } from "../services/meetUpList.services";
 
-function MeetUp() {
+function MeetUpMovie() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [city, setCity] = useState("");
-  const [movie, setMovie] = useState("");
+  // const [movie, setMovie] = useState("");
   // const [creator, setCreator] = useState("");
   const [type, setType] = useState("");
   const [showForm, setShowForm] = useState(false);
@@ -21,14 +21,14 @@ function MeetUp() {
   const handleTitle = (e) => setTitle(e.target.value);
   const handleDescription = (e) => setDescription(e.target.value);
   const handleCity = (e) => setCity(e.target.value);
-  const handleMovie = (e) => setMovie(e.target.value);
+  // const handleMovie = (e) => setMovie(e.target.value);
   // const handleCreator = (e) => setCreator(e.target.value);
   const handleType = (e) => setType(e.target.value);
   // const handleAttendees = (e) => setAttendees(e.target.value);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newMeetUp = { title, description, city, movie, type };
+    const newMeetUp = { title, description, city, type };
 
     try {
       await meetUpFormService(newMeetUp);
@@ -37,7 +37,7 @@ function MeetUp() {
       setTitle("");
       setDescription("");
       setCity("");
-      setMovie("");
+      // setMovie("");
       // setCreator("")
       setType("");
       // setAttendees("")
@@ -81,13 +81,13 @@ function MeetUp() {
 
           <br />
 
-          <label htmlFor="movie">Movie:</label>
+          {/* <label htmlFor="movie">Movie:</label>
           <input
             type="text"
             name="movie"
             value={movie}
             onChange={handleMovie}
-          />
+          /> */}
           
           {/* <label htmlFor="creator">Creator:</label>
         <input
@@ -118,4 +118,4 @@ function MeetUp() {
   );
 }
 
-export default MeetUp;
+export default MeetUpMovie;
