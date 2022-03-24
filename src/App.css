@@ -7,7 +7,8 @@ font-family: 'Smooch Sans', sans-serif; */
 
 .App {
   text-align: center;
-  background-color:lightgrey
+  background-color:lightgrey;
+  height: 100vh;
 }
 
 /* Home detail */
@@ -47,7 +48,7 @@ font-family: 'Smooch Sans', sans-serif; */
   justify-content: space-around;
   align-items: flex-start;
   align-content: normal;
-  max-height: max-content;
+  
 }
 
 #buttonMeetUp{
