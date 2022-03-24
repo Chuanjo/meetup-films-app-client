@@ -67,7 +67,7 @@ function MovieDetails() {
     <div>
     
     <h1>Movie Details</h1>
-        <img src={`${imageBaseURL}${movieDetails.poster_path}`} alt="image" />
+        <img src={`${imageBaseURL}${movieDetails.poster_path}`} alt="movie_image" />
     <h2>Title:</h2>
     <p>{movieDetails.original_title}</p>
 

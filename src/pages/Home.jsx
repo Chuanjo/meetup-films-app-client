@@ -67,7 +67,6 @@ function Home() {
       {nowPlayingMovies.map((eachMovie) => {
         return (
           <div key={eachMovie.id}>
-            {/* <Link to={`/${eachMovie.id}/movie-details`}>{eachMovie.original_title}</Link> */}
 
             <Card sx={{ maxWidth: 200 }}>
               <CardMedia
