@@ -2,6 +2,7 @@ import * as React from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { styled, alpha } from "@mui/material/styles";
 import { searchMovieService } from "../services/movie.services";
+import { useEffect, useState } from "react";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -22,6 +23,8 @@ import { Image } from "@mui/icons-material";
 
 
 function Navbar(props) {
+  
+  const {typingText, setTypingText} = useState()
   const { isLoggedIn, setIsLoggedIn } = props;
 
   const navigate = useNavigate();
@@ -31,15 +34,15 @@ function Navbar(props) {
     localStorage.removeItem("authToken")
     navigate("/login")
   };
-  const handleSignIn = () => {
-    setIsLoggedIn(false);
-  };
-  const handleLogIn = () => {
-    setIsLoggedIn(false);
-  };
-  const handleMeetUp = () => {
-    setIsLoggedIn(true);
-  };
+  // const handleSignIn = () => {
+  //   setIsLoggedIn(false);
+  // };
+  // const handleLogIn = () => {
+  //   setIsLoggedIn(false);
+  // };
+  // const handleMeetUp = () => {
+  //   setIsLoggedIn(true);
+  // };
 
   const Search = styled("div")(({ theme }) => ({
     position: "relative",

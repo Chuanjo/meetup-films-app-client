@@ -1,7 +1,14 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { meetUpFormService, meetUpListService, } from "../services/meetUpList.services";
+import {
+  meetUpFormService,
+  meetUpListService,
+} from "../services/meetUpList.services";
+import TextField from "@mui/material/TextField";
+import { Divider } from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
+import Button from "@mui/material/Button";
 
 function MeetUpMovie(props) {
   const [title, setTitle] = useState("");
@@ -49,37 +56,66 @@ function MeetUpMovie(props) {
 
         {showForm && (
           <form onSubmit={handleSubmit}>
-            <label htmlFor="title">Title:</label>
-            <input
+            <br />
+            <TextField
+              id="outlined-size-small"
+              label="Title"
               type="text"
-              name="title"
               value={title}
+              autoComplete="disable"
+              size="small"
               onChange={handleTitle}
             />
 
             <br />
+            <br />
 
-            <label htmlFor="description">Description:</label>
-            <input
+            <TextField
+              id="outlined-password-input"
+              label="Description"
               type="text"
-              name="description"
               value={description}
+              autoComplete="current-description"
+              size="small"
               onChange={handleDescription}
             />
 
             <br />
-
-            <label htmlFor="city">City:</label>
-            <input type="text" name="city" value={city} onChange={handleCity} />
-
             <br />
 
-            <label htmlFor="type">Type:</label>
-            <input type="enum" name="type" value={type} onChange={handleType} />
-
+            <TextField
+              id="outlined-size-small"
+              label="City"
+              type="text"
+              value={city}
+              autoComplete="current-description"
+              size="small"
+              onChange={handleCity}
+            />
+            <br />
             <br />
 
-            <button>Add</button>
+            <TextField
+              id="outlined-size-small"
+              label="Type"
+              type="text"
+              value={type}
+              autoComplete="current-description"
+              size="small"
+              onChange={handleType}
+            />
+
+            <br />
+            <br />
+
+            <Button
+              variant="contained"
+              endIcon={<SendIcon />}
+            >
+              Add Meet Up
+            </Button>
+
+            {/* <button>Add Meet Up</button> */}
           </form>
         )}
       </div>

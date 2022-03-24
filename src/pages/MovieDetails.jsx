@@ -3,14 +3,14 @@ import { useEffect, useState } from "react"
 import { useNavigate, Link, useParams } from "react-router-dom"
 import MeetUpMovie from "../components/MeetUpMovie"
 import { movieDetailsService } from "../services/movie.services"
-import { meetUpListService, getMeetUpById } from "../services/meetUpList.services.js"
+import { getMeetUpById } from "../services/meetUpList.services.js"
 import MeetupListComponet from "../components/MeetupListComponent"
 import { SmartButtonOutlined } from "@mui/icons-material"
 
 
 function MovieDetails() {
   const [ movieDetails, setMovieDetails ] = useState(null)
-  const [ meetUpListMovie, setMeetUpListMovie ] = useState(null)
+  // const [ meetUpListMovie, setMeetUpListMovie ] = useState(null)
   const [ meetUpList, setMeetupList] = useState([])
   
   const { id } = useParams()
@@ -41,7 +41,7 @@ function MovieDetails() {
     } 
     catch(error) 
     {
-      if (error.response.status === 401) {
+      if (error.response.status === 401 || error.response.status === 500) {
         navigate("/login");
       } else {
         navigate("/error");
@@ -85,14 +85,7 @@ function MovieDetails() {
 
     <h3>MeetUps from this movie</h3>
 
-    {/* {meetUpListMovie.map((eachMeetup) => {
-        return (
-          <div>
-            <p>{eachMeetup.includes(id)} ? {eachMeetup} </p>
-          </div>
-        );
-      })} */}
-    {/* <MeetupListComponent meetUpList={meetUpList}/> */}
+    
     {meetUpList.map((eachList)=>{
       return <p>{eachList.title}</p>
     })}
