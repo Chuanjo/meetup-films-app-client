@@ -30,7 +30,6 @@ function MeetUpList() {
   //   navigate("/meet-up-list")
   // };
 
-  
   const getAllMeetups = async () => {
     try {
       const response = await meetUpListService();
@@ -43,7 +42,7 @@ function MeetUpList() {
       }
     }
   };
-  
+
   // const getDeleteMeetups = async (req, res) => {
   //   try {
   //     const response = await meetUpDeleteService();
@@ -61,59 +60,63 @@ function MeetUpList() {
     getAllMeetups();
     // getDeleteMeetups();
   }, []);
-  
+
   if (!allMeetups) {
     return <h3>...Loading</h3>;
   }
 
   return (
-    <div>
+    <div className="meetupListContainer">
       {/* Component */}
-      <MeetUp />
+      <div>
+        <MeetUp />
+      </div>
 
-      <h1>MeetUpList</h1>
+      <div>
+        <h1>MeetUp List</h1>
 
-      {allMeetups.map((eachMeetup) => {
-        return (
-          <List
-            sx={{
-              width: "100%",
-              maxWidth: 360,
-              bgcolor: "background.paper",
-              alignItems: "center",
-            }}
-          >
-            <ListItem alignItems="flex-start, center">
-              <ListItemAvatar>
-                <Avatar alt="" />
-              </ListItemAvatar>
-              <ListItemText
-                primary={eachMeetup.title}
-                secondary={
-                  <React.Fragment>
-                    {/* <Stack direction="row" alignItems="center" spacing={1}>
-                      <IconButton onclick={handleDelete} aria-label="delete" size="small">
-                        <DeleteIcon fontSize="inherit" />
-                      </IconButton>
-                    </Stack> */}
-                    <Typography
-                      sx={{ display: "inline" }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      {eachMeetup.creator.username} <br />
-                      {eachMeetup.city}:
-                    </Typography>
-                    {`  ${eachMeetup.description}`}
-                  </React.Fragment>
-                }
-              />
-            </ListItem>
-            <Divider variant="inset" component="li" />
-          </List>
-        );
-      })}
+        {allMeetups.map((eachMeetup) => {
+          return (
+            <List
+              sx={{
+                width: "100%",
+                maxWidth: 360,
+                bgcolor: "background.paper",
+                alignItems: "center",
+              }}
+            >
+              <ListItem alignItems="flex-start, center">
+                <ListItemAvatar>
+                  <Avatar alt="" />
+                </ListItemAvatar>
+                <ListItemText
+                  primary={eachMeetup.title}
+                  secondary={
+                    <React.Fragment>
+                      <Stack
+                        direction="row"
+                        alignItems="center"
+                        spacing={1}
+                      ></Stack>
+                      <Typography
+                        sx={{ display: "inline" }}
+                        component="span"
+                        variant="body2"
+                        color="text.primary"
+                      >
+                        {eachMeetup.creator.username} <br />
+                        {eachMeetup.city}:
+                      </Typography>
+                      {`  ${eachMeetup.description}`}
+                    </React.Fragment>
+                  }
+                />
+              </ListItem>
+              <Divider variant="inset" component="li" />
+            </List>
+          );
+        })}
+      </div>
     </div>
   );
 }

@@ -52,70 +52,75 @@ function MeetUpMovie(props) {
   return (
     <div>
       <div>
-        <button onClick={handleShowForm}>New MeetUp</button>
+      <Button
+        id="buttonMeetUp"
+        onClick={handleShowForm}
+        variant="contained"
+        disableElevation
+      >
+        New MeetUp
+      </Button>
+        <br />
 
         {showForm && (
           <form onSubmit={handleSubmit}>
-            <br />
             <TextField
-              id="outlined-size-small"
+              id="filled-password-input"
+              variant="filled"
               label="Title"
               type="text"
               value={title}
               autoComplete="disable"
               size="small"
               onChange={handleTitle}
+              margin="dense"
             />
 
             <br />
-            <br />
 
             <TextField
-              id="outlined-password-input"
+              id="filled-password-input"
+              variant="filled"
               label="Description"
               type="text"
               value={description}
               autoComplete="current-description"
               size="small"
               onChange={handleDescription}
+              margin="dense"
             />
 
             <br />
-            <br />
 
             <TextField
-              id="outlined-size-small"
+              id="filled-password-input"
+              variant="filled"
               label="City"
               type="text"
               value={city}
               autoComplete="current-description"
               size="small"
               onChange={handleCity}
+              margin="dense"
             />
-            <br />
+
             <br />
 
             <TextField
-              id="outlined-size-small"
+              id="filled-password-input"
+              variant="filled"
               label="Type"
               type="text"
               value={type}
               autoComplete="current-description"
               size="small"
               onChange={handleType}
+              margin="dense"
             />
 
             <br />
-            <br />
 
-            <Button
-              variant="contained"
-              endIcon={<SendIcon />}
-            >
-              Add Meet Up
-            </Button>
-
-            {/* <button>Add Meet Up</button> */}
+            <button>Add Meet Up</button>
           </form>
         )}
       </div>

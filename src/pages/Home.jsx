@@ -34,7 +34,7 @@ function Home() {
     try {
       const response = await getNowPlayingMovieService();
       console.log(response.data);
-      console.log("hola");
+
       setNowPlayingMovies(response.data);
     } catch (error) {
       if (error.response.status === 401) {
@@ -67,25 +67,32 @@ function Home() {
       {nowPlayingMovies.map((eachMovie) => {
         return (
           <div key={eachMovie.id}>
-
-            <Card sx={{ maxWidth: 200 }}>
-              <CardMedia
-                component="img"
-                // height="140"
-                image={`${imageBaseURL}${eachMovie.poster_path}`}
-                alt={eachMovie.original_title}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  {eachMovie.original_title}
-                  <br />
-                  <h5><Link to={`/${eachMovie.id}/movie-details`}>More details</Link></h5>
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Button size="small"></Button>
-              </CardActions>
-            </Card>
+            <div class="homeMovieDetails">
+              <div class= "">
+                <Card sx={{ maxWidth: 200 }}>
+                  <CardMedia
+                    component="img"
+                    // height="140"
+                    image={`${imageBaseURL}${eachMovie.poster_path}`}
+                    alt={eachMovie.original_title}
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      {eachMovie.original_title}
+                      <br />
+                      <h5>
+                        <Link to={`/${eachMovie.id}/movie-details`}>
+                          More details
+                        </Link>
+                      </h5>
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small"></Button>
+                  </CardActions>
+                </Card>
+              </div>
+            </div>
           </div>
         );
       })}

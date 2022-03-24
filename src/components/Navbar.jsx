@@ -24,8 +24,12 @@ import { Image } from "@mui/icons-material";
 
 function Navbar(props) {
   
-  const {typingText, setTypingText} = useState()
+  const [typingText, setTypingText] = useState("")
+  const [movies, setMovies] = useState([])
+
   const { isLoggedIn, setIsLoggedIn } = props;
+
+  
 
   const navigate = useNavigate();
 
@@ -43,6 +47,20 @@ function Navbar(props) {
   // const handleMeetUp = () => {
   //   setIsLoggedIn(true);
   // };
+
+  useEffect(() => {
+    
+  }, [])
+  
+  const getTypingText = async () => {
+    try {
+      const response = await searchMovieService(typingText)
+      setTypingText(response.data)
+  
+    } catch (error) {
+      
+    }
+  }
 
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
@@ -106,9 +124,10 @@ function Navbar(props) {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  const handleInputText = (e) => {
-    console.log(e.target.value);
-    // document.getElementById("searchInput")
+  const handleInputText = async (e) => {
+    setTypingText(e.target.value);
+    const response = await searchMovieService(e.target.value)
+    setMovies(response.data)
   }
 
   const menuId = "primary-search-account-menu";
@@ -218,6 +237,7 @@ function Navbar(props) {
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
               onChange={handleInputText}
+              value={typingText}
               id="searchInput"
             />
           </Search>
