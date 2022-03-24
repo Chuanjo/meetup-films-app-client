@@ -1,9 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
+import { meetUpListUserIdService } from "../services/meetUpList.services"
 
-function Profile(props) {
+function Profile() {
+  const [ meetUpListUserId, setMeetUpListUserId ] = useState(null)
+
   const { id } = useParams();
+
+  const navigate = useNavigate();
   
+  // useEffect(() => {
+  //   getMeetUpLisUserId();
+  // }, []);
+  
+  // const getMeetUpLisUserId = async () => {
+  //   try {
+  //     const response = await meetUpListUserIdService()
+  //     setMeetUpListUserId(response.data)
+      
+  //   } 
+  //   catch(error) 
+  //   {
+  //     if (error.response.status === 401) {
+  //       navigate("/login");
+  //     } else {
+  //       navigate("/error");
+  //     }
+  //   }
+  // }
+
+  // if (!meetUpListUserId) {
+  //   return <h3>...Loading</h3>
+  // }
 
   return (
     <div>
