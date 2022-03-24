@@ -20,6 +20,10 @@ export const getMeetUpById = (id) =>{
   return service.get(`/getmeetupbyid/${id}`)
 }
 
+const meetUpListUserIdService = () =>{
+  return service.get("/")
+}
+
 const meetUpFormService = (newMeetUp) => {
   return service.post("/newMeetUp", newMeetUp);
 };
@@ -37,4 +41,5 @@ export {
   meetUpFormService,
   meetUpEditService,
   meetUpDeleteService,
+  meetUpListUserIdService
 };

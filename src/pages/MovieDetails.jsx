@@ -12,6 +12,7 @@ function MovieDetails() {
   const [ movieDetails, setMovieDetails ] = useState(null)
   const [ meetUpListMovie, setMeetUpListMovie ] = useState(null)
   const [ meetUpList, setMeetupList] = useState([])
+  const imageBaseURL = "https://image.tmdb.org/t/p/w300"
   
   const { id } = useParams()
   const navigate = useNavigate()
@@ -66,12 +67,7 @@ function MovieDetails() {
     <div>
     
     <h1>Movie Details</h1>
-
-    <h3>Poster:
-      <p>
-      
-      </p>
-    </h3>
+        <img src={`${imageBaseURL}${movieDetails.poster_path}`} alt="image" />
     <h2>Title:</h2>
     <p>{movieDetails.original_title}</p>
 
@@ -85,14 +81,7 @@ function MovieDetails() {
 
     <h3>MeetUps from this movie</h3>
 
-    {/* {meetUpListMovie.map((eachMeetup) => {
-        return (
-          <div>
-            <p>{eachMeetup.includes(id)} ? {eachMeetup} </p>
-          </div>
-        );
-      })} */}
-    {/* <MeetupListComponent meetUpList={meetUpList}/> */}
+  
     {meetUpList.map((eachList)=>{
       return <p>{eachList.title}</p>
     })}
