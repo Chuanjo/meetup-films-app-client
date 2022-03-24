@@ -8,6 +8,7 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import ListSubheader from "@mui/material/ListSubheader";
+import Button from "@mui/material/Button";
 
 
 function shuffle(array) {
@@ -78,11 +79,14 @@ function RecommendedMovies() {
             loading="lazy"
           />
           <ImageListItemBar
-            title={eachMovie.original_title.slice(0, 20)}
+            // title={eachMovie.original_title.slice(0, 20)}
             subtitle={
-              <span>
-                <Link to={`/${eachMovie.id}/movie-details`}>More details</Link>
-              </span>
+              // <span>
+              //   <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to={`/${eachMovie.id}/movie-details`}>More details</Link>
+              // </span>
+              <Button variant="contained" size="small" href={`/${eachMovie.id}/movie-details`}>
+                More details
+              </Button>
             }
             position="below"
           />

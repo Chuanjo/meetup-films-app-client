@@ -26,6 +26,17 @@ font-family: 'Smooch Sans', sans-serif; */
   font-size:10px
 }
 
+/* Movies details */
+
+.movieDetailsBox {
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+
 
 /* Meet Up List */
 
@@ -36,6 +47,7 @@ font-family: 'Smooch Sans', sans-serif; */
   justify-content: space-around;
   align-items: flex-start;
   align-content: normal;
+  max-height: max-content;
 }
 
 #buttonMeetUp{
