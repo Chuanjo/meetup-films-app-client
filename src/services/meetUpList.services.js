@@ -21,7 +21,7 @@ export const getMeetUpById = (id) =>{
 }
 
 const meetUpListUserIdService = () =>{
-  return service.get("/")
+  return service.get("/meetUpList")
 }
 
 const meetUpFormService = (newMeetUp) => {
