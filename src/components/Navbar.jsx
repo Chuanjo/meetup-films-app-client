@@ -210,7 +210,7 @@ function Navbar(props) {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar style={{ background: "black" }}>
-          <IconButton
+          {/* <IconButton
             size="large"
             edge="start"
             color="inherit"
@@ -225,11 +225,11 @@ function Navbar(props) {
               onClick={handleProfileMenuOpen}
               sx={{ mr: 2 }}
             />
-          </IconButton>
+          </IconButton> */}
           
           {/* <Image src={"../public/Logo.png"}></Image> */}
 
-          <Search>
+          {/* <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -240,7 +240,8 @@ function Navbar(props) {
               value={typingText}
               id="searchInput"
             />
-          </Search>
+
+          </Search> */}
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             

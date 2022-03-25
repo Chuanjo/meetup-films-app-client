@@ -64,17 +64,15 @@ function MovieDetails() {
     return <h3>...Loading</h3>;
   }
 
-
-
   return (
     <div >
       <div className="movieDetailsBox">
         <img
-          
           class="card-img-top"
           src={`${imageBaseURL}${movieDetails.poster_path}`}
           alt={movieDetails.original_title}
-          marginTop="200px"
+          padding-top= "50px"
+          
         />
         <div class="card-body">
           <h2 class="card-title">{movieDetails.original_title}</h2>

@@ -29,9 +29,9 @@ function MeetUpList() {
     try {
       const response = await meetUpListService();
       setAllMeetups(response.data);
+      navigate("/meet-up-list");
     } catch (err) {
       if (err.response.status === 401) {
-        navigate("/meet-up-list");
       } else {
         navigate("/error");
       }
