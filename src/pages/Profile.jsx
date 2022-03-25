@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { myUserProfileService } from "../services/user.services";
 import {
   meetUpListUserIdService,
@@ -15,7 +15,6 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import ProfileEdit from "../components/ProfileEdit";
 import * as React from "react";
-import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
 

@@ -69,17 +69,17 @@ function MovieDetails() {
         </div>
       </div>
       <div>
-        <div>
+        <div class="MeetUpMoviesComponent">
           <MeetUpMovie id={id} />
         </div>
 
-        <div>
+        {/* <div>
           <h3>Meet Up's</h3>
 
           {meetUpList.map((eachList) => {
             return <p>{eachList.title}</p>;
           })}
-        </div>
+        </div> */}
       </div>
     </div>
   );
@@ -87,18 +87,3 @@ function MovieDetails() {
 
 export default MovieDetails;
 
-{
-  /* <div>
-  <div className="movieDetailsBox">
-    <img src={`${imageBaseURL}${movieDetails.poster_path}`} alt="movie_image" />
-  </div>
-  <div>
-    <h2>Title:</h2>
-    <p>{movieDetails.original_title}</p>
-    <h3>Release date: </h3>
-    <p>{movieDetails.release_date}</p>
-    <h3>Synopsis:</h3>
-    <p>{movieDetails.overview}</p>
-  </div>
-</div>; */
-}
