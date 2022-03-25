@@ -29,11 +29,11 @@ const meetUpFormService = (newMeetUp) => {
 };
 
 const meetUpEditService = (_id, updatedMeetUp) => {
-  return service.patch(`/meetUpList/${_id}/edit`, updatedMeetUp);
+  return service.patch(`/meetUpList/${_id}`, updatedMeetUp);
 };
 
 const meetUpDeleteService = (_id) => {
-  return service.post(`/meetUpList/${_id}/delete`);
+  return service.delete(`/meetUpList/${_id}`);
 };
 
 export {

@@ -27,7 +27,7 @@ const deleteUserService = (id) =>{
 }
 
 const editUserProfileService = (id, updatedProfile) =>{
-  return service.patch(`/${id}/edit`, updatedProfile)
+  return service.patch(`/${id}`, updatedProfile)
 }
 
 export {

@@ -9,7 +9,7 @@ const ProfileService = (id) => {
   return service.get(`/${id}`)
 }
 const editProfileService = (id) => {
-  return service.get(`/${id}/edit`)
+  return service.get(`/${id}`)
 }
 
 

@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import {
   editUserProfileService,
   myUserProfileService,
+  deleteUserService,
 } from "../services/user.services";
 
 import TextField from "@mui/material/TextField";
@@ -19,25 +20,24 @@ function ProfileEdit() {
   const [showForm, setShowForm] = useState(false);
 
   const navigate = useNavigate();
-  const { id } = useParams
+  const { id } = useParams();
 
   const handleUserName = (e) => setUserName(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
   const handleCity = (e) => setCity(e.target.value);
   const handleNickName = (e) => setNickName(e.target.value);
 
-  useEffect(() =>{
-    getUserData()
-  },[])
+  useEffect(() => {
+    getUserData();
+  }, []);
 
   const getUserData = async () => {
     try {
       const response = await myUserProfileService();
-      setUserName(response.data.username)
-      setEmail(response.data.email)
-      setCity(response.data.city)
-      setNickName(response.data.nickName)
-
+      setUserName(response.data.username);
+      setEmail(response.data.email);
+      setCity(response.data.city);
+      setNickName(response.data.nickName);
     } catch (error) {
       navigate("/error");
     }
@@ -46,10 +46,19 @@ function ProfileEdit() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const updatedProfile = { userName, email, city, nickName }
-      editUserProfileService(id, updatedProfile)
+      const updatedProfile = { userName, email, city, nickName };
+      editUserProfileService(id, updatedProfile);
     } catch (error) {
-      navigate("/error")
+      navigate("/error");
+    }
+  };
+
+  const handleDelete = async () => {
+    try {
+      await deleteUserService(id);
+      navigate("/signin");
+    } catch (error) {
+      navigate("/error");
     }
   };
 
@@ -67,7 +76,16 @@ function ProfileEdit() {
       >
         Edit Profile
       </Button>
-
+      {/* <Button
+        id="buttonDeleteProf"
+        onClick={handleDelete}
+        variant="danger"
+      >
+        
+      </Button> */}
+      <Button onClick={handleDelete} variant="outline-danger">
+        Delete Profile
+      </Button>{" "}
       {showForm && (
         <form onSubmit={handleSubmit}>
           <br />

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { myUserProfileService } from "../services/user.services";
-import { meetUpListUserIdService } from "../services/meetUpList.services";
+import { meetUpListUserIdService, meetUpDeleteService} from "../services/meetUpList.services";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Divider from "@mui/material/Divider";
@@ -11,10 +11,16 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import ProfileEdit from "../components/ProfileEdit";
+import * as React from "react";
+import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
+import IconButton from "@mui/material/IconButton";
 
 function Profile() {
   const [userInfo, setUserInformation] = useState(null);
   const [meetUpList, setMeetUpList] = useState(null);
+
+  const { id } = useParams()
 
   const navigate = useNavigate();
 
@@ -37,6 +43,15 @@ function Profile() {
       }
     }
   };
+
+  const handleDelete = async () =>{
+    try {
+      await meetUpDeleteService(id)
+      navigate("/profile");
+    } catch (error) {
+      navigate("/error");
+    }
+  }
 
   if (!userInfo || !meetUpList) {
     return <h3>...Loading</h3>;
@@ -91,6 +106,9 @@ function Profile() {
                         color="text.primary"
                       >
                         {eachMeetUp.description}
+                        <IconButton onClick={handleDelete} aria-label="delete">
+                          <DeleteIcon />
+                        </IconButton>
                       </Typography>
                     </React.Fragment>
                   }
