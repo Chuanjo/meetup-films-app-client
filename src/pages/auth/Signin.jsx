@@ -67,7 +67,7 @@ function Signin() {
           id="filled-password-input"
           variant="filled"
           label="Password"
-          type="text"
+          type="password"
           value={password}
           autoComplete="disable"
           size="small"

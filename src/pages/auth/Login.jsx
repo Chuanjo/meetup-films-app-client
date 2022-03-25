@@ -43,24 +43,7 @@ function Login(props) {
     <div>
       <h3>Log In</h3>
 
-      {/* <form onSubmit={handleSubmit}>
-      <Box
-      component="form"
-      sx={{
-        '& > :not(style)': { m: 1, width: '25ch' },
-      }}
-      noValidate
-      autoComplete="off"
-      > 
-      <TextField id="outlined-basic" label="Email" variant="outlined" />
-      <input
-          type="text"
-          name="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-    </Box> */}
-
+      
       <form onSubmit={handleSubmit}>
         <TextField
           id="filled-password-input"
@@ -79,7 +62,7 @@ function Login(props) {
           id="filled-password-input"
           variant="filled"
           label="Password"
-          type="text"
+          type="password"
           value={password}
           autoComplete="disable"
           size="small"
