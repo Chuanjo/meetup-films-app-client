@@ -68,7 +68,7 @@ function MovieDetails() {
 
   return (
     <div >
-      <div className="movieDetailsBox" width="100%">
+      <div className="movieDetailsBox">
         <img
           
           class="card-img-top"
