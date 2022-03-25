@@ -12,7 +12,7 @@ import Button from "@mui/material/Button";
 import { Next } from "react-bootstrap/esm/PageItem";
 
 function ProfileEdit() {
-  const [userName, setUserName] = useState("");
+  const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [city, setCity] = useState("");
   const [nickName, setNickName] = useState("");
@@ -46,8 +46,8 @@ function ProfileEdit() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const updatedProfile = { userName, email, city, nickName };
-      editUserProfileService(id, updatedProfile);
+      const updatedProfile = { username, email, nickName, city };
+      editUserProfileService(updatedProfile);
     } catch (error) {
       navigate("/error");
     }
@@ -85,7 +85,7 @@ function ProfileEdit() {
       </Button> */}
       <Button onClick={handleDelete} variant="outline-danger">
         Delete Profile
-      </Button>{" "}
+      </Button>
       {showForm && (
         <form onSubmit={handleSubmit}>
           <br />
@@ -94,7 +94,7 @@ function ProfileEdit() {
             variant="filled"
             label="Username"
             type="text"
-            value={userName}
+            value={username}
             autoComplete="current-description"
             size="small"
             onChange={handleUserName}
