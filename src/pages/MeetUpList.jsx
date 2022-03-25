@@ -6,7 +6,6 @@ import {
   meetUpListService,
 } from "../services/meetUpList.services";
 import * as React from "react";
-
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Divider from "@mui/material/Divider";
@@ -17,19 +16,15 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
-
 function MeetUpList() {
   // 1. crear estado que controle la informacion
   const [allMeetups, setAllMeetups] = useState(null);
   // const [deleteMeetups, setDeleteMeetups] = useState("");
-
   const navigate = useNavigate();
-
   // const handleDelete = () => {
   //   setDeleteMeetups()
   //   navigate("/meet-up-list")
   // };
-
   const getAllMeetups = async () => {
     try {
       const response = await meetUpListService();
@@ -42,7 +37,6 @@ function MeetUpList() {
       }
     }
   };
-
   // const getDeleteMeetups = async (req, res) => {
   //   try {
   //     const response = await meetUpDeleteService();
@@ -55,26 +49,21 @@ function MeetUpList() {
   //     }
   //   }
   // };
-
   useEffect(() => {
     getAllMeetups();
     // getDeleteMeetups();
   }, []);
-
   if (!allMeetups) {
     return <h3>...Loading</h3>;
   }
-
   return (
     <div className="meetupListContainer">
       {/* Component */}
       <div>
         <MeetUp />
       </div>
-
       <div>
         <h1>MeetUp List</h1>
-
         {allMeetups.map((eachMeetup) => {
           return (
             <List
@@ -85,7 +74,7 @@ function MeetUpList() {
                 alignItems: "center",
               }}
             >
-              <ListItem alignItems="flex-start, center">
+              <ListItem alignItems="flex-start">
                 <ListItemAvatar>
                   <Avatar alt="" />
                 </ListItemAvatar>
@@ -104,7 +93,7 @@ function MeetUpList() {
                         variant="body2"
                         color="text.primary"
                       >
-                        {eachMeetup.creator.username} <br />
+                        {eachMeetup.creator?.username} <br />
                         {eachMeetup.city}:
                       </Typography>
                       {`  ${eachMeetup.description}`}
@@ -120,5 +109,4 @@ function MeetUpList() {
     </div>
   );
 }
-
 export default MeetUpList;

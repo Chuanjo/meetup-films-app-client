@@ -32,8 +32,8 @@ const meetUpEditService = (_id, updatedMeetUp) => {
   return service.patch(`/meetUpList/${_id}`, updatedMeetUp);
 };
 
-const meetUpDeleteService = (_id) => {
-  return service.delete(`/meetUpList/${_id}`);
+const meetUpDeleteService = (data) => {
+  return service.delete("/meetUpList", {data: {data}});
 };
 
 export {

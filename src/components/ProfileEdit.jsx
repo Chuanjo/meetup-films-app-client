@@ -21,6 +21,7 @@ function ProfileEdit() {
 
   const navigate = useNavigate();
   const { id } = useParams();
+  console.log(id)
 
   const handleUserName = (e) => setUserName(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);

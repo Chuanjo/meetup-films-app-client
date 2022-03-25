@@ -19,6 +19,7 @@ import IconButton from "@mui/material/IconButton";
 function Profile() {
   const [userInfo, setUserInformation] = useState(null);
   const [meetUpList, setMeetUpList] = useState(null);
+  const [somethingChanged, setSomethingChanged] = useState(false);
 
   const { id } = useParams()
 
@@ -26,7 +27,7 @@ function Profile() {
 
   useEffect(() => {
     getInformation();
-  }, []);
+  }, [somethingChanged]);
 
   const getInformation = async () => {
     try {
@@ -44,10 +45,11 @@ function Profile() {
     }
   };
 
-  const handleDelete = async () =>{
+  const handleDelete = async (meetUpId) =>{
     try {
-      await meetUpDeleteService(id)
-      navigate("/profile");
+      await meetUpDeleteService(meetUpId)
+      console.log(meetUpList);
+      setSomethingChanged(!somethingChanged)
     } catch (error) {
       navigate("/error");
     }
@@ -106,7 +108,7 @@ function Profile() {
                         color="text.primary"
                       >
                         {eachMeetUp.description}
-                        <IconButton onClick={handleDelete} aria-label="delete">
+                        <IconButton onClick={(e)=>handleDelete(eachMeetUp._id)} aria-label="delete">
                           <DeleteIcon />
                         </IconButton>
                       </Typography>
