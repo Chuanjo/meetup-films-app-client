@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { myUserProfileService } from "../services/user.services";
-import { meetUpListUserIdService, meetUpDeleteService} from "../services/meetUpList.services";
+import {
+  meetUpListUserIdService,
+  meetUpDeleteService,
+} from "../services/meetUpList.services";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Divider from "@mui/material/Divider";
@@ -21,7 +24,7 @@ function Profile() {
   const [meetUpList, setMeetUpList] = useState(null);
   const [somethingChanged, setSomethingChanged] = useState(false);
 
-  const { id } = useParams()
+  const { id } = useParams();
 
   const navigate = useNavigate();
 
@@ -45,82 +48,87 @@ function Profile() {
     }
   };
 
-  const handleDelete = async (meetUpId) =>{
+  const handleDelete = async (meetUpId) => {
     try {
-      await meetUpDeleteService(meetUpId)
+      await meetUpDeleteService(meetUpId);
       console.log(meetUpList);
-      setSomethingChanged(!somethingChanged)
+      setSomethingChanged(!somethingChanged);
     } catch (error) {
       navigate("/error");
     }
-  }
+  };
 
   if (!userInfo || !meetUpList) {
     return <h3>...Loading</h3>;
   }
 
   return (
-    <div>
-      <h1>Profile</h1>
-      <h3>Username:</h3>
-      <p>{userInfo.username}</p>
-      <h3>E-Mail:</h3>
-      <p>{userInfo.email}</p>
-      <h3>Nick:</h3>
-      <p>{userInfo.nickName}</p>
-      <h3>City:</h3>
-      <p>{userInfo.city}</p>
+    <div class="ProfileBox">
+      <div>
+        <h1>Profile</h1>
+        <h3>Username:</h3>
+        <p>{userInfo.username}</p>
+        <h3>E-Mail:</h3>
+        <p>{userInfo.email}</p>
+        <h3>Nick:</h3>
+        <p>{userInfo.nickName}</p>
+        <h3>City:</h3>
+        <p>{userInfo.city}</p>
 
-      <ProfileEdit />
+        <ProfileEdit />
+      </div>
 
-      {/* <button>Edit</button> */}
+      <div>
+        <h2>Event List Created</h2>
 
-      <h2>Event List Created</h2>
-
-      {meetUpList.map((eachMeetUp) => {
-        return (
-          <div key={eachMeetUp._id}>
-            <List
-              sx={{
-                width: "100%",
-                maxWidth: 360,
-                bgcolor: "background.paper",
-                alignItems: "center",
-              }}
-            >
-              <ListItem alignItems="flex-start">
-                <ListItemAvatar>
-                  <Avatar />
-                </ListItemAvatar>
-                <ListItemText
-                  primary={eachMeetUp.title}
-                  secondary={
-                    <React.Fragment>
-                      <Stack
-                        direction="row"
-                        alignItems="center"
-                        spacing={1}
-                      ></Stack>
-                      <Typography
-                        sx={{ display: "inline" }}
-                        component="span"
-                        variant="body2"
-                        color="text.primary"
-                      >
-                        {eachMeetUp.description}
-                        <IconButton onClick={(e)=>handleDelete(eachMeetUp._id)} aria-label="delete">
-                          <DeleteIcon />
-                        </IconButton>
-                      </Typography>
-                    </React.Fragment>
-                  }
-                />
-              </ListItem>
-              <Divider variant="inset" component="li" />
-            </List>
-          </div>
-        );
-      })}
+        {meetUpList.map((eachMeetUp) => {
+          return (
+            <div key={eachMeetUp._id}>
+              <List
+                sx={{
+                  width: "100%",
+                  maxWidth: 360,
+                  bgcolor: "background.paper",
+                  alignItems: "center",
+                }}
+              >
+                <ListItem alignItems="flex-start">
+                  <ListItemAvatar>
+                    <Avatar />
+                  </ListItemAvatar>
+                  <ListItemText
+                    primary={eachMeetUp.title}
+                    secondary={
+                      <React.Fragment>
+                        <Stack
+                          direction="row"
+                          alignItems="center"
+                          spacing={1}
+                        ></Stack>
+                        <Typography
+                          sx={{ display: "inline" }}
+                          component="span"
+                          variant="body2"
+                          color="text.primary"
+                        >
+                          {eachMeetUp.description}
+                          <IconButton
+                            onClick={(e) => handleDelete(eachMeetUp._id)}
+                            aria-label="delete"
+                          >
+                            <DeleteIcon />
+                          </IconButton>
+                        </Typography>
+                      </React.Fragment>
+                    }
+                  />
+                </ListItem>
+                <Divider variant="inset" component="li" />
+              </List>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

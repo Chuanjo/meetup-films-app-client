@@ -3,22 +3,9 @@ import { useNavigate, Link, useParams } from "react-router-dom";
 import MeetUpMovie from "../components/MeetUpMovie";
 import { movieDetailsService } from "../services/movie.services";
 import { getMeetUpById } from "../services/meetUpList.services.js";
-import MeetupListComponet from "../components/MeetupListComponent";
-import { SmartButtonOutlined } from "@mui/icons-material";
-import { Carousel } from "bootstrap";
-// import { Card } from "react-bootstrap";
-import { Button } from "bootstrap";
+
 import * as React from "react";
-import { useTheme } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import SkipNextIcon from "@mui/icons-material/SkipNext";
+
 
 function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState(null);
@@ -71,7 +58,6 @@ function MovieDetails() {
           class="card-img-top"
           src={`${imageBaseURL}${movieDetails.poster_path}`}
           alt={movieDetails.original_title}
-          padding-top= "50px"
           
         />
         <div class="card-body">

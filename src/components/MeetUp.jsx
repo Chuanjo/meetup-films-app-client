@@ -7,8 +7,6 @@ import {
 } from "../services/meetUpList.services";
 
 import TextField from "@mui/material/TextField";
-import { Divider } from "@mui/material";
-import SendIcon from "@mui/icons-material/Send";
 import Button from "@mui/material/Button";
 
 function MeetUp(props) {
@@ -16,10 +14,8 @@ function MeetUp(props) {
   const [description, setDescription] = useState("");
   const [city, setCity] = useState("");
   const [movie, setMovie] = useState("");
-  // const [creator, setCreator] = useState("");
   const [type, setType] = useState("");
   const [showForm, setShowForm] = useState(false);
-  // const [attendees, setAttendees] = useState([]);
 
   const navigate = useNavigate();
 
@@ -27,9 +23,7 @@ function MeetUp(props) {
   const handleDescription = (e) => setDescription(e.target.value);
   const handleCity = (e) => setCity(e.target.value);
   const handleMovie = (e) => setMovie(e.target.value);
-  // const handleCreator = (e) => setCreator(e.target.value);
   const handleType = (e) => setType(e.target.value);
-  // const handleAttendees = (e) => setAttendees(e.target.value);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,15 +31,14 @@ function MeetUp(props) {
 
     try {
       await meetUpFormService(newMeetUp);
-      // props.MeetUpList()
+      
       meetUpListService();
       setTitle("");
       setDescription("");
       setCity("");
       setMovie("");
-      // setCreator("")
       setType("");
-      // setAttendees("")
+     
     } catch (error) {
       navigate("/error");
     }
@@ -145,64 +138,3 @@ function MeetUp(props) {
 }
 
 export default MeetUp;
-
-// {/* {showForm && (
-
-//         <form onSubmit={handleSubmit}>
-//           <label htmlFor="title">Title:</label>
-//           <input
-//             type="text"
-//             name="title"
-//             value={title}
-//             onChange={handleTitle}
-//           />
-
-//           <br />
-
-//           <label htmlFor="description">Description:</label>
-//           <input
-//             type="text"
-//             name="description"
-//             value={description}
-//             onChange={handleDescription}
-//           />
-
-//           <br />
-
-//           <label htmlFor="city">City:</label>
-//           <input type="text" name="city" value={city} onChange={handleCity} />
-
-//           <br />
-
-//           <label htmlFor="movie">Movie:</label>
-//           <input
-//             type="text"
-//             name="movie"
-//             value={movie}
-//             onChange={handleMovie}
-//           />
-
-//           {/* <label htmlFor="creator">Creator:</label>
-//         <input
-//           type="text"
-//           name="creator"
-//           value={creator}
-//           onChange={handleCreator}
-//         /> */}
-
-//           <br />
-
-//           <label htmlFor="type">Type:</label>
-//           <input type="enum" name="type" value={type} onChange={handleType} />
-
-//           <br />
-
-//           {/* <label htmlFor="attendees">Attendees:</label>
-//         <input
-//           type="text"
-//           name="attendees"
-//           value={attendees}
-//           onChange={handleAttendees}
-//         /> */}
-//           <button>Add</button>
-//         </form>

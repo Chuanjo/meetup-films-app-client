@@ -2,7 +2,6 @@ import MeetUp from "../components/MeetUp";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
-  meetUpDeleteService,
   meetUpListService,
 } from "../services/meetUpList.services";
 import * as React from "react";
@@ -14,17 +13,11 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
-import IconButton from "@mui/material/IconButton";
-import DeleteIcon from "@mui/icons-material/Delete";
+
 function MeetUpList() {
-  // 1. crear estado que controle la informacion
+ 
   const [allMeetups, setAllMeetups] = useState(null);
-  // const [deleteMeetups, setDeleteMeetups] = useState("");
   const navigate = useNavigate();
-  // const handleDelete = () => {
-  //   setDeleteMeetups()
-  //   navigate("/meet-up-list")
-  // };
   const getAllMeetups = async () => {
     try {
       const response = await meetUpListService();
@@ -37,21 +30,10 @@ function MeetUpList() {
       }
     }
   };
-  // const getDeleteMeetups = async (req, res) => {
-  //   try {
-  //     const response = await meetUpDeleteService();
-  //     setDeleteMeetups(response.data);
-  //   } catch (error) {
-  //     if (error.response.status === 401) {
-  //       navigate("/meet-up-list");
-  //     } else {
-  //       navigate("/error");
-  //     }
-  //   }
-  // };
+  
   useEffect(() => {
     getAllMeetups();
-    // getDeleteMeetups();
+   
   }, []);
   if (!allMeetups) {
     return <h3>...Loading</h3>;
