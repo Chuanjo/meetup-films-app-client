@@ -14,8 +14,8 @@ const movieDetailsService = (id) => {
   return service.get(`/movieDetails/${id}`)
 }
 
-const getPopularMovieListService = () => {
-  return service.get("/")
+const recommendedMoviesService = () => {
+  return service.get("/recommendedMovies")
 }
 
 const getPopularMovieListDetailsService = (id) => {
@@ -30,7 +30,7 @@ const searchMovieService = (text) => {
 export {
   getNowPlayingMovieService,
   movieDetailsService,
-  getPopularMovieListService,
+  recommendedMoviesService,
   getPopularMovieListDetailsService,
   searchMovieService, 
 } 
