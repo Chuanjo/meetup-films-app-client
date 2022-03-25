@@ -54,7 +54,7 @@ function Signin() {
           variant="filled"
           label="email"
           type="text"
-          value={username}
+          value={email}
           autoComplete="disable"
           size="small"
           onChange={(e) => setEmail(e.target.value)}
@@ -68,7 +68,7 @@ function Signin() {
           variant="filled"
           label="Password"
           type="text"
-          value={username}
+          value={password}
           autoComplete="disable"
           size="small"
           onChange={(e) => setPassword(e.target.value)}
