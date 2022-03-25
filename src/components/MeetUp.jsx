@@ -132,7 +132,7 @@ function MeetUp() {
             autoComplete="current-description"
             size="small"
             onChange={handleType}
-          />
+          /> 
 
           <br />
           <br />

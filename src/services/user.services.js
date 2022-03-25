@@ -22,10 +22,18 @@ const myUserProfileService = () =>{
   return service.get("/")
 }
 
+const deleteUserService = (id) =>{
+  return service.delete(`/${id}`)
+}
+
+const editUserProfileService = (id, updatedProfile) =>{
+  return service.patch(`/${id}/edit`, updatedProfile)
+}
 
 export {
-  myUserProfileService
+  myUserProfileService,
   // userProfileService,
   // userProfileEditService,
-  
+  deleteUserService,
+  editUserProfileService
 }

@@ -67,8 +67,8 @@ function Home() {
       {nowPlayingMovies.map((eachMovie) => {
         return (
           <div key={eachMovie.id}>
-            <div class="homeMovieDetails">
-              <div class= "">
+            <div className="homeMovieDetails">
+              <div className= "">
                 <Card sx={{ maxWidth: 200 }}>
                   <CardMedia
                     component="img"

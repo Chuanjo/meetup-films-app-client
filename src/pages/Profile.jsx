@@ -2,6 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { myUserProfileService } from "../services/user.services";
 import { meetUpListUserIdService } from "../services/meetUpList.services";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import Divider from "@mui/material/Divider";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import Avatar from "@mui/material/Avatar";
+import Typography from "@mui/material/Typography";
+import Stack from "@mui/material/Stack";
+import ProfileEdit from "../components/ProfileEdit";
 
 function Profile() {
   const [userInfo, setUserInformation] = useState(null);
@@ -19,7 +28,7 @@ function Profile() {
       setUserInformation(response.data);
       const response2 = await meetUpListUserIdService();
       setMeetUpList(response2.data);
-     // console.log(response2.data)
+      // console.log(response2.data)
     } catch (error) {
       if (error.response.status === 401) {
         navigate("/login");
@@ -45,29 +54,53 @@ function Profile() {
       <h3>City:</h3>
       <p>{userInfo.city}</p>
 
-      <button>Edit</button>
+      <ProfileEdit />
 
-      <h2>Event create List</h2>
-      {/* {console.log(meetUpList)} */}
+      {/* <button>Edit</button> */}
+
+      <h2>Event List Created</h2>
+
       {meetUpList.map((eachMeetUp) => {
         return (
-
-          <div>
-            <div>
-              <h4>Title: </h4>
-              <p>{eachMeetUp.title}</p>
-            </div>
-            <div>
-              <h4>City: </h4>
-              <p>{eachMeetUp.city}</p>
-            </div>
-            <div>
-              <h4>Description: </h4>
-              <p>{eachMeetUp.description}</p>
-            </div>
+          <div key={eachMeetUp._id}>
+            <List
+              sx={{
+                width: "100%",
+                maxWidth: 360,
+                bgcolor: "background.paper",
+                alignItems: "center",
+              }}
+            >
+              <ListItem alignItems="flex-start">
+                <ListItemAvatar>
+                  <Avatar />
+                </ListItemAvatar>
+                <ListItemText
+                  primary={eachMeetUp.title}
+                  secondary={
+                    <React.Fragment>
+                      <Stack
+                        direction="row"
+                        alignItems="center"
+                        spacing={1}
+                      ></Stack>
+                      <Typography
+                        sx={{ display: "inline" }}
+                        component="span"
+                        variant="body2"
+                        color="text.primary"
+                      >
+                        {eachMeetUp.description}
+                      </Typography>
+                    </React.Fragment>
+                  }
+                />
+              </ListItem>
+              <Divider variant="inset" component="li" />
+            </List>
           </div>
         );
-      })} 
+      })}
     </div>
   );
 }

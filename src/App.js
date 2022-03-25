@@ -10,7 +10,7 @@ import Home from "./pages/Home";
 import MeetUpList from "./pages/MeetUpList";
 import MovieDetails from "./pages/MovieDetails";
 import Profile from "./pages/Profile";
-import ProfileEdit from "./pages/ProfileEdit";
+import ProfileEdit from "./components/ProfileEdit";
 import Error from "./pages/Error";
 import NotFound from "./pages/NotFound";
 
@@ -45,7 +45,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/:id/movie-details" element={<MovieDetails />} />
         <Route path="/profile/" element={<Profile />} />
-        <Route path="/profile/:id/edit" element={<ProfileEdit />} />
+        {/* <Route path="/profile/:id/edit" element={<ProfileEdit />} /> */}
         <Route path="/meet-up-list" element={<MeetUpList />} />
 
         <Route path="/signin" element={<Signin />} />
