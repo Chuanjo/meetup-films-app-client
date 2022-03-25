@@ -62,29 +62,34 @@ function Login(props) {
     </Box> */}
 
       <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email:</label>
-        <input
+        <TextField
+          id="filled-password-input"
+          variant="filled"
+          label="Email"
           type="text"
-          name="email"
           value={email}
+          autoComplete="disable"
+          size="small"
           onChange={(e) => setEmail(e.target.value)}
+          margin="dense"
         />
 
         <br />
-
-        <label htmlFor="password">Password:</label>
-        <input
+        <TextField
+          id="filled-password-input"
+          variant="filled"
+          label="Password"
           type="text"
-          name="password"
           value={password}
+          autoComplete="disable"
+          size="small"
           onChange={(e) => setPassword(e.target.value)}
+          margin="dense"
         />
 
         <br />
 
-        {/* <button style={{...btnStyles, ...switchBtnTheme()}}>Submit</button> */}
         <button>Submit</button>
-        {/* style={switchBtnTheme()} */}
       </form>
       <p>{errorMessage}</p>
     </div>

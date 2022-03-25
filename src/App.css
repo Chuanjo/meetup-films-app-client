@@ -4,11 +4,13 @@ font-family: 'Hubballi', cursive;
 font-family: 'Lobster', cursive;
 font-family: 'Smooch Sans', sans-serif; */
 
+body {
+  background-color:lightgrey;
+  height: 100%;
+}
 
 .App {
   text-align: center;
-  background-color:lightgrey;
-  height: 100vh;
 }
 
 /* Home detail */

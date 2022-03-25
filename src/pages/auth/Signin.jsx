@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signinService } from "../../services/auth.services";
+import TextField from "@mui/material/TextField";
 
 function Signin() {
   const [username, setUsername] = useState("");
@@ -34,52 +35,72 @@ function Signin() {
       <h3>Sign In</h3>
 
       <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username:</label>
-        <input
+        <TextField
+          id="filled-password-input"
+          variant="filled"
+          label="Username"
           type="text"
-          name="username"
           value={username}
+          autoComplete="disable"
+          size="small"
           onChange={(e) => setUsername(e.target.value)}
+          margin="dense"
         />
 
         <br />
 
-        <label htmlFor="email">Email:</label>
-        <input
+        <TextField
+          id="filled-password-input"
+          variant="filled"
+          label="email"
           type="text"
-          name="email"
-          value={email}
+          value={username}
+          autoComplete="disable"
+          size="small"
           onChange={(e) => setEmail(e.target.value)}
+          margin="dense"
         />
 
         <br />
 
-        <label htmlFor="password">Password:</label>
-        <input
+        <TextField
+          id="filled-password-input"
+          variant="filled"
+          label="Password"
           type="text"
-          name="password"
-          value={password}
+          value={username}
+          autoComplete="disable"
+          size="small"
           onChange={(e) => setPassword(e.target.value)}
+          margin="dense"
         />
 
         <br />
 
-        <label htmlFor="nickName">Nick:</label>
-        <input
+        <TextField
+          id="filled-password-input"
+          variant="filled"
+          label="Nick"
           type="text"
-          name="nickName"
           value={nickName}
+          autoComplete="disable"
+          size="small"
           onChange={(e) => setNickName(e.target.value)}
+          margin="dense"
         />
 
         <br />
 
-        <label htmlFor="city">City:</label>
-        <input
+        <TextField
+          id="filled-password-input"
+          variant="filled"
+          label="City"
           type="text"
-          name="city"
           value={city}
+          autoComplete="disable"
+          size="small"
           onChange={(e) => setCity(e.target.value)}
+          margin="dense"
         />
 
         <br />

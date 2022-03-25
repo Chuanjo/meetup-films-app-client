@@ -68,12 +68,13 @@ function MovieDetails() {
 
   return (
     <div >
-      <div marginTop="200px" className="movieDetailsBox" width="100%">
+      <div className="movieDetailsBox" width="100%">
         <img
           
           class="card-img-top"
           src={`${imageBaseURL}${movieDetails.poster_path}`}
           alt={movieDetails.original_title}
+          marginTop="200px"
         />
         <div class="card-body">
           <h2 class="card-title">{movieDetails.original_title}</h2>

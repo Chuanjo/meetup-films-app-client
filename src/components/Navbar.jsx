@@ -19,24 +19,18 @@ import InputBase from "@mui/material/InputBase";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { Image } from "@mui/icons-material";
 
-
-
-
 function Navbar(props) {
-  
-  const [typingText, setTypingText] = useState("")
-  const [movies, setMovies] = useState([])
+  const [typingText, setTypingText] = useState("");
+  const [movies, setMovies] = useState([]);
 
   const { isLoggedIn, setIsLoggedIn } = props;
-
-  
 
   const navigate = useNavigate();
 
   const handleLogOut = () => {
-    setIsLoggedIn(false)
-    localStorage.removeItem("authToken")
-    navigate("/login")
+    setIsLoggedIn(false);
+    localStorage.removeItem("authToken");
+    navigate("/login");
   };
   // const handleSignIn = () => {
   //   setIsLoggedIn(false);
@@ -48,19 +42,14 @@ function Navbar(props) {
   //   setIsLoggedIn(true);
   // };
 
-  useEffect(() => {
-    
-  }, [])
-  
+  useEffect(() => {}, []);
+
   const getTypingText = async () => {
     try {
-      const response = await searchMovieService(typingText)
-      setTypingText(response.data)
-  
-    } catch (error) {
-      
-    }
-  }
+      const response = await searchMovieService(typingText);
+      setTypingText(response.data);
+    } catch (error) {}
+  };
 
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
@@ -110,25 +99,30 @@ function Navbar(props) {
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
+  const handleProfileMenuClose = (event) => {
+    setAnchorEl(event.currentTarget);
   };
-
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+   
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
   };
-
+  
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
+  };
+  const handleMobileMenuClose = () => {
+    setMobileMoreAnchorEl(null);
   };
 
   const handleInputText = async (e) => {
     setTypingText(e.target.value);
-    const response = await searchMovieService(e.target.value)
-    setMovies(response.data)
-  }
+    const response = await searchMovieService(e.target.value);
+    setMovies(response.data);
+  };
 
   const menuId = "primary-search-account-menu";
   const renderMenu = (
@@ -147,37 +141,36 @@ function Navbar(props) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-    {isLoggedIn &&
-      <MenuItem onClick={handleMenuClose}>
-        <Link to="/profile">Profile</Link>
-      </MenuItem>
-    }
-    {isLoggedIn && 
-    <MenuItem onClick={handleMenuClose}>
-        <Link to="/" onClick={handleLogOut}>Log Out</Link>
-      </MenuItem>
-    }
-    
-    {!isLoggedIn &&
-     <MenuItem onClick={handleMenuClose}>
-        <Link to="/login">Log In</Link>
-      </MenuItem>
-    }
-    {!isLoggedIn &&
-     <MenuItem onClick={handleMenuClose}>
-        <Link to="/signin">Sing In</Link>
-      </MenuItem>
-    }
-      <MenuItem onClick={handleMenuClose}>
-        <Link to="/">Home</Link>
+      {isLoggedIn && (
+        <MenuItem onClick={handleProfileMenuClose} >
+          <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to="/profile">Profile</Link>
+        </MenuItem>
+      )}
+      {isLoggedIn && (
+        <MenuItem onClick={handleProfileMenuClose} >
+          <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to="/" onClick={handleLogOut}>
+            Log Out
+          </Link>
+        </MenuItem>
+      )}
+
+      {!isLoggedIn && (
+        <MenuItem onClick={handleProfileMenuClose}>
+          <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to="/login">Log In</Link>
+        </MenuItem>
+      )}
+      {!isLoggedIn && (
+        <MenuItem onClick={handleProfileMenuClose} >
+          <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to="/signin">Sing In</Link>
+        </MenuItem>
+      )}
+      <MenuItem onClick={handleMenuClose} >
+        <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to="/">Home</Link>
       </MenuItem>
 
-      <MenuItem onClick={handleMenuClose}>
-        <Link to="/meet-up-list">Meet up</Link>
+      <MenuItem onClick={handleMenuClose} >
+        <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to="/meet-up-list">Meet up</Link>
       </MenuItem>
-      
-      
-      
     </Menu>
   );
 
@@ -224,9 +217,16 @@ function Navbar(props) {
             aria-label="open drawer"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
+            <MenuIcon
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleProfileMenuOpen}
+              sx={{ mr: 2 }}
+            />
           </IconButton>
-
+          
           {/* <Image src={"../public/Logo.png"}></Image> */}
 
           <Search>
@@ -243,6 +243,7 @@ function Navbar(props) {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            
             <IconButton
               size="large"
               edge="end"
@@ -276,4 +277,3 @@ function Navbar(props) {
 }
 
 export default Navbar;
-
