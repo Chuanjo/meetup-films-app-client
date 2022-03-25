@@ -11,7 +11,7 @@ import { Divider } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import Button from "@mui/material/Button";
 
-function MeetUp() {
+function MeetUp(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [city, setCity] = useState("");
@@ -37,7 +37,7 @@ function MeetUp() {
 
     try {
       await meetUpFormService(newMeetUp);
-
+      // props.MeetUpList()
       meetUpListService();
       setTitle("");
       setDescription("");

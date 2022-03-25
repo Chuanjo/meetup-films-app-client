@@ -34,9 +34,9 @@ function MeetUpList() {
     try {
       const response = await meetUpListService();
       setAllMeetups(response.data);
+      navigate("/meet-up-list");
     } catch (err) {
       if (err.response.status === 401) {
-        navigate("/meet-up-list");
       } else {
         navigate("/error");
       }
@@ -104,7 +104,7 @@ function MeetUpList() {
                         variant="body2"
                         color="text.primary"
                       >
-                        {eachMeetup.creator.username} <br />
+                        {eachMeetup.creator?.username} <br />
                         {eachMeetup.city}:
                       </Typography>
                       {`  ${eachMeetup.description}`}
